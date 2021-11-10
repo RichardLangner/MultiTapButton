@@ -15,7 +15,7 @@ Key features (read the __MultiTapButton.h__ file for more information)
 </ul> 
 </strong>
 
-## WHY DO I NEED IT?
+## WHY DO I NEED IT ?
 At at absolute minimum, it saves you writing debounce code.<br>
 But it can do a lot more - it's ideal for any device using single or multi-taps, or perhaps a 10 second press to reboot a device. Or all of the above.
 
