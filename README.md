@@ -19,7 +19,7 @@ Key features (read the __MultiTapButton.h__ file for more information)
 If you have a button (e.g. an active LOW switch) which pulls GPIO2 LOW when pressed, and you want to declare it as <strong>'button1'</strong> you can use <br>
 `MultiTapButton button1(2,LOW);`
 
-## CHECKING IF BUTTON WAS TAPPED
+## CHECKING IF BUTTON WAS TAPPED ONCE OR MORE
 To check if the button was tapped, use <br>`if(button1.tapped()){...}`<br><br>
 For multiple taps, you can find the number of taps with <br>`int x = button1.tapCount();`
 
