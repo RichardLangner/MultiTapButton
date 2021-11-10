@@ -19,22 +19,22 @@ Key features (read the __MultiTapButton.h__ file for more information)
 If you have a button (e.g. an active LOW switch) which pulls GPIO2 LOW when pressed, and you want to declare it as <strong>'button1'</strong> you can use <br>
 `MultiTapButton button1(2,LOW);`
 
-## TAPS
+## CHECKING IF BUTTON WAS TAPPED
 To check if the button was tapped, use <br>`if(button1.tapped()){...}`<br><br>
 For multiple taps, you can find the number of taps with <br>`int x = button1.tapCount();`
-
-## BUTTON CHANGES STATE
-When a button is pressed or released it generates an event. These events only happen once per transition.<br>
-To check if a button just went 'down' (switch closed) use <br>`if(button1.downEvent()){...}`<br>
-To check if a button just went 'up' (switch opened) use <br>`if(button1.upEvent()){...}`
 
 ## CHECKING IF THE BUTTON IS DOWN
 To check if a button is currently down use `if(button1.down()){...}`
 
-## BUTTON PRESS DURATION
+## CHECKING IF BUTTON CHANGED STATE
+When a button is pressed or released it generates an event. These events only happen once per transition.<br>
+To check if a button just went 'down' (switch closed) use <br>`if(button1.downEvent()){...}`<br>
+To check if a button just went 'up' (switch opened) use <br>`if(button1.upEvent()){...}`
+
+## CHECKING BUTTON PRESS DURATION
 To check how long the button has been down, use <br>`unsigned long x = button1.downMillis();`
 
-## BONUS FEATURES
+## STORAGE FOR YOUR PRIVATE VARIABLES
  For ease of coding I have provided each button with a set of general purpose variables that you can use for any purpose you like. You can use the <strong>integers</strong> as counters, <strong>booleans</strong> for toggling things on/off, and <strong>unsigned</strong>
  longs for large numbers such as milliseconds<br>
  These bonus variables can be addressed
