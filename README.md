@@ -19,7 +19,7 @@ Key features (read the __MultiTapButton.h__ file for more information)
 If you have a button (e.g. an active LOW switch) which pulls GPIO2 LOW when pressed, and you want to declare it as <strong>'button1'</strong> you can use <br>
 `MultiTapButton button1(2,LOW);`
 
-## DEBOUNCE NOISY SWITCHES
+## DEBOUNCING NOISY SWITCHES
 In noisy environments, you may want to specify a longer debounce period than the default of 10ms. Here, the third parameter is used to define a 20ms debounce period <br>
 `MultiTapButton button1(2, LOW, 20)`
 
