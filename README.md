@@ -9,7 +9,7 @@ Key features (read the __MultiTapButton.h__ file for more information)
   <li>Works on any GPIO pin</li>
   <li>Does not use interrupts</li>
   <li>Works on active LOW or active HIGH switches</li>
-  <li>Non-blocking code, so will not slow you program</li>
+  <li>Non-blocking code, so will not slow your program</li>
   <li>Free variable storage, making cleaner code</li>
   <li>Simple to use.</li>  
 </ul> 
@@ -51,4 +51,4 @@ To check how long the button has been down, use <br>`unsigned long x = button1.d
   `button1.userULongB`.
 
   ## EXAMPLE CODE
-  The example code demonstrates some of the events that MultiTapButton uses. Ensure you check the button regularly as the timing accuracy depends on refreshing the button's state. Best practice is to have a fast non-blocking loop and check the button at the start of the loop() code.
+  The example code demonstrates some of the events that MultiTapButton uses. Ensure you check the button regularly in your code as the timing accuracy depends on refreshing the button's state. Best practice is to have a fast non-blocking loop and check the button in the loop() code.
