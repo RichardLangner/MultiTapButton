@@ -15,6 +15,10 @@ Key features (read the __MultiTapButton.h__ file for more information)
 </ul> 
 </strong>
 
+## WHY DO I NEED IT?
+At at absolute minimum, it saves you writing debounce code.<br>
+It's ideal for any device using single or multi-taps, or perhaps a 10 second press to reboot a device. Or all of the above.
+
 ## DEFINING A BUTTON
 If you have a button (e.g. an active LOW switch) which pulls GPIO2 LOW when pressed, and you want to declare it as <strong>'button1'</strong> you can use <br>
 `MultiTapButton button1(2,LOW);`
