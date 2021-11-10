@@ -16,7 +16,7 @@ Key features (read the __MultiTapButton.h__ file for more information)
 </strong>
 
 ## DEFINING A BUTTON
-If you have a button (e.g. an active LOW switch) which pulls GPIO2 LOW when pressed, and you want to declare it as <strong>' button1 '</strong> you can use <br>
+If you have a button (e.g. an active LOW switch) which pulls GPIO2 LOW when pressed, and you want to declare it as <strong>'button1'</strong> you can use <br>
 `MultiTapButton button1(2,LOW);`
 
 ## DEBOUNCE NOISY SWITCHES
