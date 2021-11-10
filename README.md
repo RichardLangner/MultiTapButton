@@ -42,7 +42,7 @@ To check how long the button has been down, use <br>`unsigned long x = button1.d
  For ease of coding I have provided a set of general purpose variables which only relate to their own button. You can use the <strong>integers</strong> as counters, <strong>booleans</strong> for toggling things on/off, and <strong>unsigned</strong>
  longs for large numbers such as milliseconds<br>
  These bonus variables can be addressed
-  using the following code -<br>
+  using the following code (assuming the switch is named 'button1')<br>
 	`button1.userIntA`<br>
 	`button1.userIntB`<br>
 	`button1.userBoolA`<br>
