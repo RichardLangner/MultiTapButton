@@ -39,7 +39,7 @@ To check if a button is currently down use `if(button1.down()){...}`
 To check how long the button has been down, use <br>`unsigned long x = button1.downMillis();`
 
 ## BONUS FEATURES
- For ease of coding I have provided a set of general purpose variables which only relate to their own button. You can use the <strong>integers</strong> as counters, <strong>booleans</strong> for toggling things on/off, and <strong>unsigned</strong>
+ For ease of coding I have provided each button with a set of general purpose variables that you can use for any purpose you like. You can use the <strong>integers</strong> as counters, <strong>booleans</strong> for toggling things on/off, and <strong>unsigned</strong>
  longs for large numbers such as milliseconds<br>
  These bonus variables can be addressed
   using the following code (assuming the switch is named 'button1')<br>
@@ -52,3 +52,9 @@ To check how long the button has been down, use <br>`unsigned long x = button1.d
 
   ## EXAMPLE CODE
   The example code demonstrates some of the events that MultiTapButton uses. Ensure you check the button regularly in your code as the timing accuracy depends on refreshing the button's state. Best practice is to have a fast non-blocking loop and check the button in the loop() code.
+
+  ## FINALLY
+  All timing parameters are available to the user. You can set the debounce period, the milliseconds after which a tap becomes a press, and the maximum gap between multiple taps (the inter-tap gap, after which it decides taps have ceased and it will return the number of taps).
+ Here is an example of setting all the available custom values when creating a button.<br><br>
+ To create a button to be active HIGH pin on GPIO2, debounced for 20ms, have a tap maximum time of 400ms and inter-tap gap of 200ms.<br>
+ `MultiTapButton button1(2, HIGH, 20, 400, 200);`
