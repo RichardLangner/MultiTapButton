@@ -19,8 +19,7 @@ Use a MultiTapButton to detect:
 	LONGER PRESSES
 	- duration of press	so far				unsigned long x = button1.downMillis();
 	- if a button down						if(button1.down()){...}
-	- if button is still down after (ms)	if(button1.downMillis(1000)){...}
-
+	
 Example code is provided in 'MultiTapButton' sketch.
 
 -------------- USAGE --------------

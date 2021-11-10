@@ -1,53 +1,54 @@
-# MultiTapButton Class : for Buttons and Switches.
+# MultiTapButton : A class for buttons and switches.
 
-Key features:
+Key features (read the __MultiTapButton.h__ file for more information)
 <strong>
 <ul>
   <li>Detects Single or Multiple taps</li>
   <li>Detects Short or Long presses</li>
   <li>Built-in debounce</li>
-  <li>Does not use interrupts</li>
   <li>Works on any GPIO pin</li>
+  <li>Does not use interrupts</li>
   <li>Works on active LOW or active HIGH switches</li>
+  <li>Non-blocking code, so will not slow you program</li>
   <li>Free variable storage, making cleaner code</li>
   <li>Simple to use.</li>  
 </ul> 
 </strong>
 
-## DEBOUNCE EXAMPLE (simple)
-At its simplest, MultiTapButton debounces a physical button or switch.
-
-If you have <strong>'button1'</strong>which pulls GPIO2 LOW when pressed (active LOW), declare it thus<br>
+## DEFINING A BUTTON
+If you have a button (e.g. an active LOW switch) which pulls GPIO2 LOW when pressed, and you want to declare it as <strong>' button1 '</strong> you can use <br>
 `MultiTapButton button1(2,LOW);`
 
-## DEBOUNCE EXAMPLE (noisy environment)
-In noisy environments, you may want to specify a longer debounce period.	
-Here is how you define 20ms debounce period <br>
+## DEBOUNCE NOISY SWITCHES
+In noisy environments, you may want to specify a longer debounce period than the default of 10ms. Here, the third parameter is used to define a 20ms debounce period <br>
 `MultiTapButton button1(2, LOW, 20)`
 
 ## TAPS
-To check if the button was tapped use `if(button1.tapped()){...}`<br><br>
-If you need to know the number of taps use `int x = button1.tapCount();`
-	
-## BUTTON EVENTS
-You can check if a button (or swith) has just changed state.<br>
-if a button just went 'down' (switched closed) use `if(button1.downEvent()){...}`
-if a button just went 'up' (switched closed) use `if(button1.upEvent()){...}`
+To check if the button was tapped, use <br>`if(button1.tapped()){...}`<br><br>
+For multiple taps, you can find the number of taps with <br>`int x = button1.tapCount();`
 
-## LONG PRESSES
-You can check if a button is down (switch closed) and how long for.<br><br>
-To check if a button down use `if(button1.down()){...}`<br>
-To check how long the button was down for use `unsigned long x = button1.downMillis();`
-if button is still down after (ms)	`if(button1.downMillis(1000)){...}`
-		
+## BUTTON CHANGES STATE
+When a button is pressed or released it generates an event. These events only happen once per transition.<br>
+To check if a button just went 'down' (switch closed) use <br>`if(button1.downEvent()){...}`<br>
+To check if a button just went 'up' (switch opened) use <br>`if(button1.upEvent()){...}`
 
- For ease of coding, you can use each button's inbuilt general purpose user variables.
- E.G.use integers as counters, and booleans for toggling things on/off, unsigned
- longs for large numbers such as millis();
-	`button1.userIntA`				Spare Integer, free for you to use.
-	`button1.userIntB`				Spare Integer, free for you to use.
-	`button1.userBoolA`				Spare Boolean, free for you to use.
-	`button1.userBoolB`				Spare Boolean, free for you to use.
-    `button1.userULongA`			Spare Unsigned Long,free for you to use.
-    `button1.userULongB`			Spare Unsigned Long,free for you to use. 
-*/
+## CHECKING IF THE BUTTON IS DOWN
+To check if a button is currently down use `if(button1.down()){...}`
+
+## BUTTON PRESS DURATION
+To check how long the button has been down, use <br>`unsigned long x = button1.downMillis();`
+
+## BONUS FEATURES
+ For ease of coding I have provided a set of general purpose variables which only relate to their own button. You can use the <strong>integers</strong> as counters, <strong>booleans</strong> for toggling things on/off, and <strong>unsigned</strong>
+ longs for large numbers such as milliseconds<br>
+ These bonus variables can be addressed
+  using the following code -<br>
+	`button1.userIntA`<br>
+	`button1.userIntB`<br>
+	`button1.userBoolA`<br>
+	`button1.userBoolB`<br>
+  `button1.userULongA`<br>
+  `button1.userULongB`.
+
+  ## EXAMPLE CODE
+  The example code demonstrates some of the events that MultiTapButton uses. Ensure you check the button regularly as the timing accuracy depends on refreshing the button's state. Best practice is to have a fast non-blocking loop and check the button at the start of the loop() code.
