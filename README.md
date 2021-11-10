@@ -23,7 +23,7 @@ If you have a button (e.g. an active LOW switch) which pulls GPIO2 LOW when pres
 To check if the button was tapped, use <br>`if(button1.tapped()){...}`<br><br>
 For multiple taps, you can find the number of taps with <br>`int x = button1.tapCount();`
 
-## CHECKING IF THE BUTTON IS DOWN
+## CHECKING IF BUTTON IS DOWN
 To check if a button is currently down use `if(button1.down()){...}`
 
 ## CHECKING IF BUTTON HAS CHANGED STATE
