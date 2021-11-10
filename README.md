@@ -26,7 +26,7 @@ For multiple taps, you can find the number of taps with <br>`int x = button1.tap
 ## CHECKING IF THE BUTTON IS DOWN
 To check if a button is currently down use `if(button1.down()){...}`
 
-## CHECKING IF BUTTON CHANGED STATE
+## CHECKING IF BUTTON HAS CHANGED STATE
 When a button is pressed or released it generates an event. These events only happen once per transition.<br>
 To check if a button just went 'down' (switch closed) use <br>`if(button1.downEvent()){...}`<br>
 To check if a button just went 'up' (switch opened) use <br>`if(button1.upEvent()){...}`
