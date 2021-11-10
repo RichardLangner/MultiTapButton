@@ -46,11 +46,11 @@ To check how long the button has been down, use <br>`unsigned long x = button1.d
   `button1.userULongA`<br>
   `button1.userULongB`.
 
-  ## EXAMPLE CODE
-  The example code demonstrates some of the events that MultiTapButton uses. Ensure you check the button regularly in your code as the timing accuracy depends on refreshing the button's state. Best practice is to have a fast non-blocking loop and check the button in the loop() code.
-
   ## CUSTOMISING YOUR BUTTONS
   All timing parameters are available to the user. You can set the debounce period, the milliseconds after which a tap becomes a press, and the maximum gap between multiple taps (the inter-tap gap, after which it decides taps have ceased and it will return the number of taps).
  Here is an example of setting all the available custom values when creating a button.<br><br>
  To create a button to be active HIGH pin on GPIO2, debounced for 20ms, have a tap maximum time of 400ms and inter-tap gap of no more than 200ms.<br>
  `MultiTapButton button1(2, HIGH, 20, 400, 200);`
+
+  ## EXAMPLE CODE
+  The example code demonstrates some of the events that MultiTapButton uses. Ensure you check the button regularly in your code as the timing accuracy depends on refreshing the button's state. Best practice is to have a fast non-blocking loop and check the button in the loop() code.
