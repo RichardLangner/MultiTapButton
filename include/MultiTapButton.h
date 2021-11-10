@@ -1,5 +1,5 @@
 /*
-MultiTapButton Class v0.11 updated 9 November 2021.
+MultiTapButton Class v0.11 updated 10 November 2021.
 Written by Richard Langner, Sheffield Hackspace, UK. 
  
 At its simplest, MultiTapButton debounces a physical button.
