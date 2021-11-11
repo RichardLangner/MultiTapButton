@@ -1,4 +1,4 @@
-# MultiTapButton : A class for buttons and switches.
+# MultiTapButton : Buttons and switches made easy.
 
 Key features (read the __MultiTapButton.h__ file for more information)
 <strong>
