@@ -26,12 +26,12 @@ it down for a few seconds, and see the results in the Serial port window.
 MultiTapButton button1(BUTTON_1_PIN,LOW);
 
 void setup() {
-	pinMode(BUTTON_1_PIN, INPUT_PULLUP);			// Set the switched pin as an input
-	pinMode(BUILTIN_LED, OUTPUT);					// Enable pull-up resistor
-	digitalWrite(BUILTIN_LED, HIGH);				// Set LED to OFF
-	Serial.begin(74880);							// ESP8266 native baud rate, please add
-													// monitor_speed = 74880
-													// to the platformio.ini file
+	pinMode(BUTTON_1_PIN, INPUT_PULLUP);	// Set the switched pin as an input
+	pinMode(BUILTIN_LED, OUTPUT);			// Enable pull-up resistor
+	digitalWrite(BUILTIN_LED, HIGH);		// Set LED to OFF
+	Serial.begin(74880);					// ESP8266 native baud rate, please add
+											// monitor_speed = 74880
+											// to the platformio.ini file
 }
 
 void loop() {
