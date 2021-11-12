@@ -97,6 +97,7 @@ MultiTapButton(int Button_Pin, bool ActiveLevel, unsigned long Debounce = 10, un
 	_debounce = Debounce;
 	_tap_ms = Tap_msec;
 	_tapGap_ms = TapGap_ms;
+	pinMode(Button_Pin,INPUT);
 	}
 
 unsigned long update() {
