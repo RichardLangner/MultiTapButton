@@ -51,15 +51,14 @@ To check how long the button has been down, use <br>`unsigned long x = button1.d
   ## CUSTOMISING YOUR BUTTONS (FOR ADVANCED USERS)
   The minimum you need to create a MultiTapButton is the GPIO port number and the active level, in this case GPIO2 and active low -<br>
   `MultiTapButton button1(2, LOW);`<br>
-  ## There are four more parameters you can use:<br>
-  If you want to enable a pull-up resistor on the GPIO pin, make the third parameter true (the default is false)<br>
-  `MultiTapButton button1(2, LOW, true);`<br><br>
-  'Noisy' contacts may require extra debounce time. The forth parameter here sets it to 20ms (the default is 10ms)<br>
-  `MultiTapButton button1(2, LOW, true, 20);`<br><br>
-  You may want to set the maximum tap period (after which it becomes a press). The fifth parameter here sets it to 400ms (default is 500ms)<br>
-  `MultiTapButton button1(2, LOW, true, 20, 400);`<br><br>
+  ## There are 3 more parameters you can use:<br>
+
+  'Noisy' contacts may require extra debounce time. The third parameter here sets it to 20ms (the default is 10ms)<br>
+  `MultiTapButton button1(2, LOW, 20);`<br><br>
+  You may want to set the maximum tap period (after which it becomes a press). The forth parameter here sets it to 400ms (default is 500ms)<br>
+  `MultiTapButton button1(2, LOW, 20, 400);`<br><br>
   You may want to set the inter-tap gap (after which it returns the number of taps). The last parameter here sets it to 200ms (default is 250ms)<br>
-  `MultiTapButton button1(2, LOW, true, 20, 400, 200);`<br><br>
+  `MultiTapButton button1(2, LOW, 20, 400, 200);`<br><br>
 
  
   

@@ -91,13 +91,12 @@ public:
 
 
 // Create a TapButton object
-MultiTapButton(int Button_Pin, bool ActiveLevel, bool pullUpEnabled=false,unsigned long Debounce = 10, unsigned long Tap_msec = 500, unsigned long TapGap_ms =250){
+MultiTapButton(int Button_Pin, bool ActiveLevel, unsigned long Debounce = 10, unsigned long Tap_msec = 500, unsigned long TapGap_ms =250){
 	_buttonPin = Button_Pin;
 	_activeLevel = ActiveLevel;
 	_debounce = Debounce;
 	_tap_ms = Tap_msec;
 	_tapGap_ms = TapGap_ms;
-	pinMode(Button_Pin, pullUpEnabled ? INPUT_PULLUP:INPUT);
 	}
 
 unsigned long update() {

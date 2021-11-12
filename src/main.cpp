@@ -19,14 +19,14 @@ it down for a few seconds, and see the results in the Serial port window.
 
 #include <Arduino.h>
 #include "MultiTapButton.h"
-#define BUTTON_1_PIN  D3		// My Wemos D1 mini button
+#define BUTTON_1_PIN  D2		// My Wemos D1 mini button
 #define BUILTIN_LED D4			// My Wemos D1 mini LED pin
 
 // Create a TapButton object with active LOW pin, 
 MultiTapButton button1(BUTTON_1_PIN,LOW);
 
 void setup() {
-	pinMode(BUTTON_1_PIN, INPUT);					// Set the switched pin as an input
+	pinMode(BUTTON_1_PIN, INPUT_PULLUP);			// Set the switched pin as an input
 	pinMode(BUILTIN_LED, OUTPUT);					// Enable pull-up resistor
 	digitalWrite(BUILTIN_LED, HIGH);				// Set LED to OFF
 	Serial.begin(74880);							// ESP8266 native baud rate, please add
