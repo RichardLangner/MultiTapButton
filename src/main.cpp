@@ -7,7 +7,7 @@ button is held for more than 2 secs.
 All button timings are customisable - see 'MultiTapButton_01.h' for the extended
 parameter list.
 
-Written by Richard Langner, Sheffield, UK, 22 August 2021.
+Written by Richard Langner, Sheffield, UK, 12 November 2021.
 
 This example should work on Arduino-type boards/Sonoff/ESP8266 etc.
 as it doesn't use special interrupts or timers.
@@ -53,7 +53,7 @@ void loop() {
 		  }
 
 	if(x==6){							// Exactly 6 quick taps.
-		Serial.printf("You tapped EXACTLY %d times!", x);
+		Serial.printf("You tapped EXACTLY 6 times!\n");
 	}
 	
 	if(button1.downMillis() > 2000){	// Pressed for more than 2 seconds
