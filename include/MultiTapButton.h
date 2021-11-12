@@ -100,6 +100,11 @@ MultiTapButton(int Button_Pin, bool ActiveLevel = LOW, unsigned long Debounce = 
 	pinMode(Button_Pin, INPUT);
 	}
 
+// Enable pull-up resistor on the input pin
+void	enablePullUp(bool enabled){
+		pinMode(_buttonPin, enabled ? INPUT_PULLUP:INPUT);
+		}
+
 unsigned long update() {
 	// Reads the switch pin and saves the results
 	if(digitalRead(_buttonPin) == _activeLevel) {		// Read the button level, invert if active HIGH
