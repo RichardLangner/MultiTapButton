@@ -1,6 +1,10 @@
 # MultiTapButton : Buttons and switches made easy.
 
-Key features (read the __MultiTapButton.h__ file for more information)
+## WHY DO I NEED IT?
+At at absolute minimum, it saves you writing debounce code.<br>
+But it can do a lot more - it's ideal for any device using single taps or multi-taps, or perhaps a 10 second press to reboot a device, or perhaps all of the above using one button.
+
+## Key features
 <strong>
 <ul>
   <li>Detects Single or Multiple taps</li>
@@ -9,29 +13,25 @@ Key features (read the __MultiTapButton.h__ file for more information)
   <li>Works on any GPIO pin</li>
   <li>Does not use interrupts</li>
   <li>Works on active LOW or active HIGH switches</li>
-  <li>Non-blocking code, so will not slow your program</li>
-  <li>Free variable storage, making cleaner code</li>
-  <li>Simple to use.</li>  
+  <li>Private variable storage, allowing cleaner code</li>
 </ul> 
 </strong>
 
-## WHY DO I NEED IT?
-At at absolute minimum, it saves you writing debounce code.<br>
-But it can do a lot more - it's ideal for any device using single or multi-taps, or perhaps a 10 second press to reboot a device. Or all of the above.
 
 ## DEFINING A BUTTON
-If you have a button (e.g. an active LOW switch) which pulls GPIO2 LOW when pressed, and you want to declare it as <strong>'button1'</strong> you can use <br>
+If you have a button which pulls GPIO2 LOW when pressed, and you want to define it as <strong>'button1'</strong> you can use <br>
 `MultiTapButton button1(2,LOW);`
 
-## CHECKING IF BUTTON WAS TAPPED ONCE OR MORE
-To check if the button was tapped, use <br>`if(button1.tapped()){...}`<br><br>
+## CHECKING IF BUTTON WAS TAPPED
+To check if the button was tapped, use <br>`if(button1.tapped()){...}`<br>
+## CHECKING IF BUTTON WAS TAPPED MULTIPLE TIMES
 For multiple taps, you can find the number of taps with <br>`int x = button1.tapCount();`
 
 ## CHECKING IF BUTTON IS DOWN
-To check if a button is currently down use `if(button1.down()){...}`
+To check if a button is currently down use<br> `if(button1.down()){...}`
 
 ## CHECKING IF BUTTON HAS CHANGED STATE
-When a button is pressed or released it generates an event. These events only happen once per transition.<br>
+
 To check if a button just went 'down' (switch closed) use <br>`if(button1.downEvent()){...}`<br>
 To check if a button just went 'up' (switch opened) use <br>`if(button1.upEvent()){...}`
 
@@ -48,12 +48,12 @@ To check how long the button has been down, use <br>`unsigned long x = button1.d
 	`button1.userBoolA`<br>
 	`button1.userBoolB`<br>
   `button1.userULongA`<br>
-  `button1.userULongB`.
+  `button1.userULongB`
 
   ## CUSTOMISING YOUR BUTTONS
   All timing parameters are available to the user. You can set the debounce period, the milliseconds after which a tap becomes a press, and the maximum gap between multiple taps (the inter-tap gap, after which it decides taps have ceased and it will return the number of taps).
- Here is an example of setting all the available custom values when creating a button.<br><br>
- To create a button to be active HIGH pin on GPIO2, debounced for 20ms, have a tap maximum time of 400ms and inter-tap gap of no more than 200ms.<br>
+  Below is an example of setting all the available custom values when creating a button.<br><br>
+  To use a button connected to the GPIO2 pin which is active HIGH, debounced for 20ms, has a tap maximum time of 400ms and inter-tap gap of no more than 200ms, it is coded thus<br>
  `MultiTapButton button1(2, HIGH, 20, 400, 200);`
 
   ## EXAMPLE CODE
