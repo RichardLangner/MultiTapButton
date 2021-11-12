@@ -30,8 +30,8 @@ To check if a button is currently down use<br> `if(button1.down()){...your code 
 
 ## CHECKING IF BUTTON HAS CHANGED STATE
 
-To check if a button just went 'down' (switch closed) use <br>`if(button1.downEvent()){...your code here}`<br>
-To check if a button just went 'up' (switch opened) use <br>`if(button1.upEvent()){...your code here}`
+To check if a button was just pressed (switch closed) use <br>`if(button1.downEvent()){...your code here}`<br>
+To check if a button just released (switch opened) use <br>`if(button1.upEvent()){...your code here}`
 
 ## CHECKING BUTTON PRESS DURATION
 To check how long the button has been down, use <br>`unsigned long x = button1.downMillis();`
