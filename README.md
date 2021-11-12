@@ -12,11 +12,11 @@
 </ul> 
 </strong>
 
-## Why do I need it?
+## WHY DO I NEED IT?
 At at absolute minimum, it saves you writing debounce code for each button.<br>
 But it can do a lot more - it's ideal for any device using single taps or multi-taps, or even a 10 second press to reboot a device, or perhaps all of these things using one button.
 
-## Defining a button
+## DEFINING A BUTTON
 If you have a button which pulls GPIO2 LOW when pressed, and you want to define it as <strong>'button1'</strong> you can use <br>
 `MultiTapButton button1(2,LOW);`
 
