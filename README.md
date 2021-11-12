@@ -13,24 +13,25 @@
 
 ## WHY DO I NEED IT?
 At at absolute minimum, it saves you writing debounce code for each button.<br>
-But it can do a lot more - it's ideal for any device using single taps or multi-taps, or even a 10 second press to reboot a device, or perhaps all of these things using only one button.
+But it can do a lot more - it's ideal for any device using single taps or multi-taps, or even a 10 second press to reboot a device, or perhaps all of these things using only one button.<br><br>
+It can also simplify coding if you have several buttons, and has the advantage that each button contains its own settings and variables.
 
 ## DEFINING A BUTTON
 If you have a button which pulls GPIO2 LOW when pressed, and you want to define it as <strong>'button1'</strong> you can use <br>
 `MultiTapButton button1(2,LOW);`
 
 ## CHECKING IF BUTTON WAS TAPPED
-To check if the button was tapped, use <br>`if(button1.tapped()){...}`<br>
+To check if the button was tapped, use <br>`if(button1.tapped()){...your code here}`<br>
 ## CHECKING IF BUTTON WAS TAPPED MULTIPLE TIMES
 For multiple taps, you can find the number of taps with <br>`int x = button1.tapCount();`
 
 ## CHECKING IF BUTTON IS DOWN
-To check if a button is currently down use<br> `if(button1.down()){...}`
+To check if a button is currently down use<br> `if(button1.down()){...your code here}`
 
 ## CHECKING IF BUTTON HAS CHANGED STATE
 
-To check if a button just went 'down' (switch closed) use <br>`if(button1.downEvent()){...}`<br>
-To check if a button just went 'up' (switch opened) use <br>`if(button1.upEvent()){...}`
+To check if a button just went 'down' (switch closed) use <br>`if(button1.downEvent()){...your code here}`<br>
+To check if a button just went 'up' (switch opened) use <br>`if(button1.upEvent()){...your code here}`
 
 ## CHECKING BUTTON PRESS DURATION
 To check how long the button has been down, use <br>`unsigned long x = button1.downMillis();`
@@ -47,14 +48,20 @@ To check how long the button has been down, use <br>`unsigned long x = button1.d
   `button1.userULongA`<br>
   `button1.userULongB`
 
-  ## CUSTOMISING YOUR BUTTONS
-  All timing parameters are available to the user. You can set the debounce period, set the milliseconds after which a tap becomes a press, and set the maximum gap between multiple taps (the inter-tap gap, after which it decides taps have ceased and it will return the number of taps).
-  Below is an example of setting all the available custom values when first creating a button.<br><br>
-  To use a button connected to the GPIO2 pin which is active HIGH, debounced for 20ms, has a tap maximum time of 400ms and inter-tap gap of no more than 200ms, it is coded thus<br>
- `MultiTapButton button1(2, HIGH, 20, 400, 200);`
+  ## CUSTOMISING YOUR BUTTONS (FOR ADVANCED USERS)
+  The minimum you need to create a MultiTapButton is the GPIO port number and the active level, in this case GPIO2 and active low -<br>
+  `MultiTapButton button1(2, LOW);`<br>
+  ## There are four more parameters you can use:<br>
+  If you want to enable a pull-up resistor on the GPIO pin, make the third parameter true (the default is false)<br>
+  `MultiTapButton button1(2, LOW, true);`<br><br>
+  'Noisy' contacts may require extra debounce time. The forth parameter here sets it to 20ms (the default is 10ms)<br>
+  `MultiTapButton button1(2, LOW, true, 20);`<br><br>
+  You may want to set the maximum tap period (after which it becomes a press). The fifth parameter here sets it to 400ms (default is 500ms)<br>
+  `MultiTapButton button1(2, LOW, true, 20, 400);`<br><br>
+  You may want to set the inter-tap gap (after which it returns the number of taps). The last parameter here sets it to 200ms (default is 250ms)<br>
+  `MultiTapButton button1(2, LOW, true, 20, 400, 200);`<br><br>
 
-  ## PULL-UP RESISTOR
-  Some GPIO pins have an internal pull-up resistor which can be enabled or disabled<br>
-  `button1.enablePullUp(true);`<br>`button1.enablePullUp(false);`
+ 
+  
   ## EXAMPLE CODE
   The example code provided demonstrates some of the events that MultiTapButton uses. Ensure you check the button regularly in your code as the timing accuracy depends on refreshing the button's state. Best practice is to have a fast non-blocking loop and check the button in the loop() code.
