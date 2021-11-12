@@ -8,7 +8,7 @@
   <li>Works on any GPIO pin</li>
   <li>Does not use interrupts</li>
   <li>Works on active LOW or active HIGH switches</li>
-  <li>Private variable storage for cleaner code</li>
+  <li>Each button has private variable storage for cleaner code</li>
 </ul> 
 </strong>
 
