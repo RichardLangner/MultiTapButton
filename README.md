@@ -54,7 +54,7 @@ To check how long the button has been down, use <br>`unsigned long x = button1.d
  `MultiTapButton button1(2, HIGH, 20, 400, 200);`
 
   ## PULL-UP RESISTOR
-  Some GPIO pins have an internal pull-up resistors which can be enabled or disabled<br>
+  Some GPIO pins have an internal pull-up resistor which can be enabled or disabled<br>
   `button1.enablePullUp(true);`<br>`button1.enablePullUp(false);`
   ## EXAMPLE CODE
   The example code provided demonstrates some of the events that MultiTapButton uses. Ensure you check the button regularly in your code as the timing accuracy depends on refreshing the button's state. Best practice is to have a fast non-blocking loop and check the button in the loop() code.
