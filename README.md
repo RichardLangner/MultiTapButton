@@ -1,10 +1,5 @@
 # MultiTapButton : Buttons and switches made easy.
 
-## WHY DO I NEED IT?
-At at absolute minimum, it saves you writing debounce code.<br>
-But it can do a lot more - it's ideal for any device using single taps or multi-taps, or perhaps a 10 second press to reboot a device, or perhaps all of the above using one button.
-
-## Key features
 <strong>
 <ul>
   <li>Detects Single or Multiple taps</li>
@@ -13,12 +8,15 @@ But it can do a lot more - it's ideal for any device using single taps or multi-
   <li>Works on any GPIO pin</li>
   <li>Does not use interrupts</li>
   <li>Works on active LOW or active HIGH switches</li>
-  <li>Private variable storage, allowing cleaner code</li>
+  <li>Private variable storage, making cleaner code</li>
 </ul> 
 </strong>
 
+## Why do I need it?
+At at absolute minimum, it saves you writing debounce code for each button.<br>
+But it can do a lot more - it's ideal for any device using single taps or multi-taps, or even a 10 second press to reboot a device, or perhaps all of these things using one button.
 
-## DEFINING A BUTTON
+## Defining a button
 If you have a button which pulls GPIO2 LOW when pressed, and you want to define it as <strong>'button1'</strong> you can use <br>
 `MultiTapButton button1(2,LOW);`
 
