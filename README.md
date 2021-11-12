@@ -14,7 +14,7 @@
 ## WHY DO I NEED IT?
 At at absolute minimum, it saves you writing debounce code for each button.<br>
 But it can do a lot more - it's ideal for any device using single taps or multi-taps, or even a 10 second press to reboot a device, or perhaps all of these things using only one button.<br><br>
-It can also simplify coding if you have several buttons, and has the advantage that each button contains its own settings and variables.
+It can also simplify coding if you have several buttons, and has the advantage that each button contains its own settings and data.
 
 ## DEFINING A BUTTON
 If you have a button which pulls GPIO2 LOW when pressed, and you want to define it as <strong>'button1'</strong> you can use <br>
