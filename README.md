@@ -49,9 +49,9 @@ To check how long the button has been down, use <br>`unsigned long x = button1.d
   `button1.userULongB`
 
   ## CUSTOMISING YOUR BUTTONS (FOR ADVANCED USERS)
-  The minimum you need to create a MultiTapButton is the GPIO port number and the active level, in this case GPIO2 and active low -<br>
+  The minimum you need to create a MultiTapButton is the GPIO port number and the active level (two parameters), in this case GPIO2 and active low -<br>
   `MultiTapButton button1(2, LOW);`<br>
-  ## There are 3 more parameters you can use:<br>
+  ## There are a few more parameters you can use:<br>
 
   'Noisy' contacts may require extra debounce time. The third parameter here sets it to 20ms (the default is 10ms)<br>
   `MultiTapButton button1(2, LOW, 20);`<br><br>
