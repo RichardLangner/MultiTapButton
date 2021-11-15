@@ -57,7 +57,7 @@ void loop() {
 	}
 	
 	if(button1.downMillis() > 2000){	// Pressed for more than 2 seconds
-		Serial.printf("Button has now been down for more than %10lu ms\r", button1.downMillis());
+		Serial.printf("Button has now been down for more than %10lu ms\n", button1.downMillis());
 		}
 
 	// Turn on LED if button is pressed down
