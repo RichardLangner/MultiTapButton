@@ -7,6 +7,7 @@
   <li>Built-in debouncer removes switch noise</li>
   <li>Use almost any GPIO pin; no need for interrupts</li>
   <li>Works with active LOW or active HIGH switches</li>
+  <li>Easy implementation of auto-repeat</li>
   <li>Each button has its own variable storage for cleaner code</li>
 </ul> 
 </strong>
