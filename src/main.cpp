@@ -19,15 +19,15 @@ it down for a few seconds, and see the results in the Serial port window.
 
 #include <Arduino.h>
 #include "MultiTapButton.h"
-#define BUTTON_1_PIN  D2		// My Wemos D1 mini button
-#define BUILTIN_LED D4			// My Wemos D1 mini LED pin
+#define BUTTON_1_PIN  D2					// My Wemos D1 mini button
+#define BUILTIN_LED D4						// My Wemos D1 mini LED pin
 
 // Create a TapButton object with active LOW pin, 
 MultiTapButton button1(BUTTON_1_PIN,LOW);
 
 void setup() {
-	pinMode(BUTTON_1_PIN, INPUT_PULLUP);	// Set the switched pin as an input
-	pinMode(BUILTIN_LED, OUTPUT);			// Enable pull-up resistor
+	pinMode(BUTTON_1_PIN, INPUT_PULLUP);	// Set the switched pin as an input with pullup
+	pinMode(BUILTIN_LED, OUTPUT);			// Define LED pin
 	digitalWrite(BUILTIN_LED, HIGH);		// Set LED to OFF
 	Serial.begin(74880);					// ESP8266 native baud rate, please add
 											// monitor_speed = 74880
@@ -36,31 +36,36 @@ void setup() {
 
 void loop() {
 
-	if(button1.downEvent()){			// Button just pressed down.
-		Serial.printf("EVENT: Button down\n");
+	if(button1.downEvent()){				// Button just pressed down.
+		Serial.printf("EVENT: Button down, toggle the LED\n");
+		digitalWrite(BUILTIN_LED, !digitalRead(BUILTIN_LED));
 		}
 	
-	if(button1.upEvent()){				// Button just released.
+	if(button1.upEvent()){					// Button just released.
 		Serial.printf("EVENT: Button up\n");
 		}
 
-	if(button1.tapped()){				// *Every* time button is tapped.
+	if(button1.tapped()){					// *Every* time button is tapped.
 		Serial.printf("Tapped\n");}
 
   	int x = button1.tapCount();
-  	if(x>0){							// Your multi-tap code here.
+  	if(x>0){								// Your multi-tap code here.
 		  Serial.printf("Tapped %d times\n",x);
 		  }
 
-	if(x==6){							// Exactly 6 quick taps.
+	if(x==6){								// Exactly 6 quick taps.
 		Serial.printf("You tapped EXACTLY 6 times!\n");
 	}
 	
-	if(button1.downMillis() > 2000){	// Pressed for more than 2 seconds
-		Serial.printf("Button has now been down for more than %10lu ms\n", button1.downMillis());
-		}
-
-	// Turn on LED if button is pressed down
-	digitalWrite(BUILTIN_LED, !button1.down());
+	if(button1.downMillis() > 2000){		// Pressed for more than 2 seconds
+		static int j;
+		int i=(button1.downMillis()-2000) / 250;
+		if(i==j){return;}
+		j=i;
+		// Auto-repeat toggles LED
+		digitalWrite(BUILTIN_LED, i%2);
+		// Write an increasing number to serial
+		Serial.printf("Auto repeat value =%d\n",i);
+	}
 }
 
