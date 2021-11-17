@@ -1,26 +1,20 @@
- /*
-Example code for the 'MultiTapButton' class which debounces switch/button presses and taps.
-It reports how many times you multi-tapped the button, and reports if the
-button is held for more than 2 secs.
-** Monitor the Serial port for messages of what it is doing **
+ /*By Richard Langner, Sheffield, UK, 17 November 2021.
 
-All button timings are customisable - see 'MultiTapButton_01.h' for the extended
-parameter list.
+Example code for the 'MultiTapButton' class.
+See the ReadMe.md file to see what MultiTapButton can do.
 
-Written by Richard Langner, Sheffield, UK, 12 November 2021.
+I have used pins for Wemos D1 mini.
 
-This example should work on Arduino-type boards/Sonoff/ESP8266 etc.
-as it doesn't use special interrupts or timers.
-
-USAGE OF THIS EXAMPLE CODE
+USAGE OF THIS EXAMPLE CODE (watch the output on the Serial port)
 Try quickly tapping the button one or more times, or holding
-it down for a few seconds, and see the results in the Serial port window.
+it down for a few seconds to see the auto-repeat. 
+
 */
 
 #include <Arduino.h>
 #include "MultiTapButton.h"
-#define BUTTON_1_PIN  D2					// My Wemos D1 mini button
-#define BUILTIN_LED D4						// My Wemos D1 mini LED pin
+#define BUTTON_1_PIN  D2	// Button between D2 (GPIO4) and Ground
+#define BUILTIN_LED D4		// My Wemos D1 mini LED pin
 
 // Create a TapButton object with active LOW pin, 
 MultiTapButton button1(BUTTON_1_PIN,LOW);
@@ -29,43 +23,50 @@ void setup() {
 	pinMode(BUTTON_1_PIN, INPUT_PULLUP);	// Set the switched pin as an input with pullup
 	pinMode(BUILTIN_LED, OUTPUT);			// Define LED pin
 	digitalWrite(BUILTIN_LED, HIGH);		// Set LED to OFF
-	Serial.begin(74880);					// ESP8266 native baud rate, please add
-											// monitor_speed = 74880
-											// to the platformio.ini file
+	Serial.begin(74880);					// Select your baud rate or 
+	// add monitor_speed = 74880 to the platformio.ini file.
 }
 
 void loop() {
 
-	if(button1.downEvent()){				// Button just pressed down.
+	// Button just pressed down.
+	if(button1.downEvent()){				
 		Serial.printf("EVENT: Button down, toggle the LED\n");
 		digitalWrite(BUILTIN_LED, !digitalRead(BUILTIN_LED));
 		}
-	
-	if(button1.upEvent()){					// Button just released.
+
+	// Button just released.
+	if(button1.upEvent()){
 		Serial.printf("EVENT: Button up\n");
 		}
 
-	if(button1.tapped()){					// *Every* time button is tapped.
+	// Occurs *every* time button is tapped.
+	if(button1.tapped()){					
 		Serial.printf("Tapped\n");}
 
+	// Your multi-tap code here.
   	int x = button1.tapCount();
-  	if(x>0){								// Your multi-tap code here.
+  	if(x>0){								
 		  Serial.printf("Tapped %d times\n",x);
 		  }
 
-	if(x==6){								// Exactly 6 quick taps.
+	// To detect if exactly 6 quick taps.
+	if(x==6){
 		Serial.printf("You tapped EXACTLY 6 times!\n");
 	}
-	
-	if(button1.downMillis() > 2000){		// Pressed for more than 2 seconds
+
+	// Auto-repeats if button pressed for more than 1.5 seconds
+	if(button1.downMillis() > 1500){
 		static int j;
-		int i=(button1.downMillis()-2000) / 250;
-		if(i==j){return;}
+		int i=(button1.downMillis()-1500) / 250;
+		if(i==j){return;}	// Count did not change
 		j=i;
-		// Auto-repeat toggles LED
+
+		// Your auto-repeat code here
+		Serial.printf("Toggles LED every 250ms\n");		
 		digitalWrite(BUILTIN_LED, i%2);
-		// Write an increasing number to serial
-		Serial.printf("Auto repeat value =%d\n",i);
+		// Write an increasing auto-repeat number to serial
+		Serial.printf("Auto repeat value = %4d\n",i);
 	}
 }
 
