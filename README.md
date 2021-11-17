@@ -34,7 +34,7 @@ To check if a button was just pressed (switch closed) use <br>`if(button1.downEv
 To check if a button just released (switch opened) use <br>`if(button1.upEvent()){...your code here}`
 
 ## CHECKING BUTTON PRESS DURATION
-To check how long the button has been down, use <br>`unsigned long x = button1.downMillis();
+To check how long the button has been down, use <br>`unsigned long x = button1.downMillis();`
 
 ## AUTO-REPEAT AFTER A DELAY
 The example code demonstrates an auto-repeat after 1.5sec, by toggling an LED and incrementing a counter.
