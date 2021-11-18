@@ -1,14 +1,16 @@
- /*By Richard Langner, Sheffield, UK, 17 November 2021.
+/*By Richard Langner, Sheffield, UK, 18 November 2021.
 
 Example code for the 'MultiTapButton' class.
+
+  Detects Single or Multiple taps
+  Detects Short or Long presses
+  Built-in debouncer removes switch noise
+  Use almost any GPIO pin; no need for interrupts
+  Works with active LOW or active HIGH switches
+  Easy implementation of auto-repeat
+  Each button has its own variable storage for cleaner code
+
 See the ReadMe.md file to see what MultiTapButton can do.
-
-I have used pins for Wemos D1 mini.
-
-USAGE OF THIS EXAMPLE CODE (watch the output on the Serial port)
-Try quickly tapping the button one or more times, or holding
-it down for a few seconds to see the auto-repeat. 
-
 */
 
 #include <Arduino.h>
@@ -44,8 +46,9 @@ void loop() {
 	if(button1.tapped()){					
 		Serial.printf("Tapped\n");}
 
-	// Your multi-tap code here.
+
   	int x = button1.tapCount();
+	// Your multi-tap code here.
   	if(x>0){								
 		  Serial.printf("Tapped %d times\n",x);
 		  }
@@ -55,18 +58,17 @@ void loop() {
 		Serial.printf("You tapped EXACTLY 6 times!\n");
 	}
 
-	// Auto-repeats if button pressed for more than 1.5 seconds
-	if(button1.downMillis() > 1500){
-		static int j;
-		int i=(button1.downMillis()-1500) / 250;
-		if(i==j){return;}	// Count did not change
+	// Auto-repeats if button pressed for more than 1.2 seconds
+	if(button1.downMillis() > 1200ul){
+		static unsigned long j;
+		unsigned long i=(button1.downMillis() -1200ul) / 250;
+		if(i==j){return;}	// Count same as last time, exit
 		j=i;
 
-		// Your auto-repeat code here
-		Serial.printf("Toggles LED every 250ms\n");		
+		// Your auto-repeat code here, toggle LED
 		digitalWrite(BUILTIN_LED, i%2);
-		// Write an increasing auto-repeat number to serial
-		Serial.printf("Auto repeat value = %4d\n",i);
+		// Send number to serial
+		Serial.printf("Toggles LED every 250ms %8d\n",i);
 	}
 }
 
