@@ -65,7 +65,9 @@ private:
 	unsigned long	_lastTimeUp			= millis();
 	unsigned long	_lastTimeTapped		= millis();
 	unsigned long	_down_ms;
-	unsigned long	_up_ms;		
+	unsigned long	_up_ms;
+	unsigned long	_autoRepeatDwell_ms	= 1200;	// NEW
+	unsigned long	_autoRepeat_ms		= 250;	// NEW
 
 	bool			_longTapEnded = false;
 	bool			_shortTapEnded = false;
@@ -73,6 +75,7 @@ private:
 	bool			_downEvent=false;
 	bool			_upEvent=false;
 	bool			_tapped;
+	bool			_autoRepeat;		// Auto-repeat enable NEW
 	int				_tapCounter;
 	int				_tapCounter2;
 	uint8_t			_buttonPin;			// Switch pin
@@ -114,6 +117,11 @@ unsigned long update() {
 				_shortTapEnded = false;					// Button is down
 				return 1;								// Button DOWN event =1
 			}
+			// Check if auto-repeat enabled
+			// Check if downMillis > dwellTime
+			// Check if millis > last _autoRepeatMillis + _autoRepeat_ms
+			// Update _autoRepeatMillis = millis
+			// ++_tapCounter;
 		}
 		return 0;										// Nothing to report =0
 	}	
@@ -132,7 +140,7 @@ unsigned long update() {
 			_shortTapEnded = ((_up_ms - _down_ms) <= _tap_ms);	// Short tap
 			if(_shortTapEnded){++_tapCounter;}			// Increment tap counter
 			_lastTimeTapped = millis();					// Remember tap time
-			_tapped=true;								// Set flag
+			++_tapCounter;							// Set flag
 			return 0;
 			}				
 		}
