@@ -61,21 +61,22 @@ you have a fast non-blocking loop(); and check buttons regularly.
 class MultiTapButton
 {
 private:
-	unsigned long	_lastTimeDown		= millis();
-	unsigned long	_lastTimeUp			= millis();
-	unsigned long	_lastTimeTapped		= millis();
+	unsigned long	_lastTimeDown	= millis();
+	unsigned long	_lastTimeUp		= millis();
+	unsigned long	_lastTimeTapped	= millis();
 	unsigned long	_down_ms;
 	unsigned long	_up_ms;
 
-	unsigned long	_autoRepeatDwell_ms	= 1200;	// Auto-repeat
-	unsigned long	_autoRepeat_ms		= 250;	// Auto-repeat
-	bool			_autoRepeat;				// Auto-repeat
+	unsigned long	_AR_dwell_ms	= 1200;		// Auto-repeat
+	unsigned long	_AR_last_ms	= millis();		// Auto-repeat
+	unsigned long	_AR_every_ms	= 250;		// Auto-repeat
+	bool			_AR_enabled	= true;	// Auto-repeat
 
-	bool			_longTapEnded = false;
-	bool			_shortTapEnded = false;
-	bool			_down = false;	
-	bool			_downEvent=false;
-	bool			_upEvent=false;
+	bool			_longTapEnded 	= false;
+	bool			_shortTapEnded 	= false;
+	bool			_down 			= false;	
+	bool			_downEvent		= false;
+	bool			_upEvent		= false;
 	bool			_tapped;
 	int				_tapCounter;
 	int				_tapCounter2;
@@ -118,12 +119,14 @@ unsigned long update() {
 				_shortTapEnded = false;					// Button is down
 				return 1;								// Button DOWN event =1
 			}
-			// Auto-repeat
-			// Check if auto-repeat enabled
-			// Check if downMillis > dwellTime
-			// Check if millis > last _autoRepeatMillis + _autoRepeat_ms
-			// Update _autoRepeatMillis = millis
-			// ++_tapCounter;
+			// Auto-repeat code
+			// if(!_AR_enabled){return 0;};				// Auto-repeat enabled?
+			// if(_down_ms > _AR_dwell_ms){return 0;};		// Dwell time exceeded?
+			// if((millis() - _AR_last_ms) > (_AR_every_ms)){
+			// 	// Time for next auto-repeat?
+			// 	_AR_last_ms = millis();					// Update for last tap time
+			// 	++_tapCounter;							// Update tap counter
+			// }
 		}
 		return 0;										// Nothing to report =0
 	}	
