@@ -65,8 +65,8 @@ void loop() {
 		if(i==j){return;}	// Count same as last time, exit
 		j=i;
 
-		// Your auto-repeat code here, toggle LED
-		digitalWrite(BUILTIN_LED, i%2);
+		// Your auto-repeat code here
+		digitalWrite(BUILTIN_LED, i%2);	// Toggle LED
 		// Send number to serial
 		Serial.printf("Toggles LED every 250ms %8d\n",i);
 	}
