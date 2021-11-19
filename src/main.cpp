@@ -68,7 +68,7 @@ void loop() {
 		// Your auto-repeat code here
 		digitalWrite(BUILTIN_LED, i%2);	// Toggle LED
 		// Send number to serial
-		Serial.printf("Toggles LED every 250ms %8d\n",i);
+		Serial.printf("Toggles LED every 250ms %8lu\n",i);
 	}
 }
 
