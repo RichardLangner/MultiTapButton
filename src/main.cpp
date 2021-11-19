@@ -58,17 +58,17 @@ void loop() {
 		Serial.printf("You tapped EXACTLY 6 times!\n");
 	}
 
-	// // Auto-repeats if button pressed for more than 1.2 seconds
-	// if(button1.downMillis() > 1200ul){
-	// 	static unsigned long j;
-	// 	unsigned long i=(button1.downMillis() -1200ul) / 250;
-	// 	if(i==j){return;}	// Count same as last time, exit
-	// 	j=i;
+	// Auto-repeats if button pressed for more than 1.2 seconds
+	if(button1.downMillis() > 1200ul){
+		static unsigned long j;
+		unsigned long i=(button1.downMillis() -1200ul) / 250;
+		if(i==j){return;}	// Count same as last time, exit
+		j=i;
 
-	// 	// Your auto-repeat code here
-	// 	digitalWrite(BUILTIN_LED, i%2);	// Toggle LED
-	// 	// Send number to serial
-	// 	Serial.printf("Toggles LED every 250ms %8lu\n",i);
-	// }
+		// Your auto-repeat code here
+		digitalWrite(BUILTIN_LED, i%2);	// Toggle LED
+		// Send number to serial
+		Serial.printf("Toggles LED every 250ms %8lu\n",i);
+	}
 }
 
