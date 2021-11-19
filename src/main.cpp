@@ -33,8 +33,7 @@ void loop() {
 
 	// Button just pressed down.
 	if(button1.downEvent()){				
-		Serial.printf("EVENT: Button down, toggle the LED\n");
-		digitalWrite(BUILTIN_LED, !digitalRead(BUILTIN_LED));
+		Serial.printf("EVENT: Button down\n");
 		}
 
 	// Button just released.
@@ -44,8 +43,9 @@ void loop() {
 
 	// Occurs *every* time button is tapped.
 	if(button1.tapped()){					
-		Serial.printf("Tapped\n");}
-
+		Serial.printf("Tapped, toggle the LED\n");
+		digitalWrite(BUILTIN_LED, !digitalRead(BUILTIN_LED));
+		}
 
   	int x = button1.tapCount();
 	// Your multi-tap code here.
@@ -53,22 +53,16 @@ void loop() {
 		  Serial.printf("Tapped %d times\n",x);
 		  }
 
-	// To detect if exactly 6 quick taps.
-	if(x==6){
-		Serial.printf("You tapped EXACTLY 6 times!\n");
+	// To detect if exactly 5 quick taps.
+	if(x==5){
+		Serial.printf("You tapped EXACTLY 5 times!\n");
+		button1.autoRepeat(true);
 	}
 
-	// Auto-repeats if button pressed for more than 1.2 seconds
-	if(button1.downMillis() > 1200ul){
-		static unsigned long j;
-		unsigned long i=(button1.downMillis() -1200ul) / 250;
-		if(i==j){return;}	// Count same as last time, exit
-		j=i;
-
-		// Your auto-repeat code here
-		digitalWrite(BUILTIN_LED, i%2);	// Toggle LED
-		// Send number to serial
-		Serial.printf("Toggles LED every 250ms %8lu\n",i);
+	// If button pressed for more than 6 seconds, disable auto-repeat
+	if(button1.downMillis() > 6000ul){
+		button1.autoRepeat(false);
+		Serial.printf("Button down for %10lu milliseconds\n",button1.downMillis());
 	}
 }
 

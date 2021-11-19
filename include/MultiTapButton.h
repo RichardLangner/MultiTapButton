@@ -1,5 +1,5 @@
 /*
-MultiTapButton Class v0.11 updated 10 November 2021.
+MultiTapButton Class v0.2 updated 19 November 2021.
 Written by Richard Langner, Sheffield Hackspace, UK. 
  
 At its simplest, MultiTapButton debounces a physical button.
@@ -61,22 +61,22 @@ you have a fast non-blocking loop(); and check buttons regularly.
 class MultiTapButton
 {
 private:
-	unsigned long	_lastTimeDown	= millis();
-	unsigned long	_lastTimeUp		= millis();
-	unsigned long	_lastTimeTapped	= millis();
+	unsigned long	_lastTimeDown		= millis();
+	unsigned long	_lastTimeUp			= millis();
+	unsigned long	_lastTimeTapped		= millis();
 	unsigned long	_down_ms;
 	unsigned long	_up_ms;
 
 	unsigned long	_AR_dwell_ms	= 1200;		// Auto-repeat
 	unsigned long	_AR_last_ms	= millis();		// Auto-repeat
 	unsigned long	_AR_every_ms	= 250;		// Auto-repeat
-	bool			_AR_enabled	= true;	// Auto-repeat
+	bool			_AR_enabled	= true;			// Auto-repeat
 
-	bool			_longTapEnded 	= false;
-	bool			_shortTapEnded 	= false;
-	bool			_down 			= false;	
-	bool			_downEvent		= false;
-	bool			_upEvent		= false;
+	bool			_longTapEnded = false;
+	bool			_shortTapEnded = false;
+	bool			_down = false;	
+	bool			_downEvent=false;
+	bool			_upEvent=false;
 	bool			_tapped;
 	int				_tapCounter;
 	int				_tapCounter2;
@@ -120,13 +120,13 @@ unsigned long update() {
 				return 1;								// Button DOWN event =1
 			}
 			// Auto-repeat code
-			// if(!_AR_enabled){return 0;};				// Auto-repeat enabled?
-			// if(_down_ms > _AR_dwell_ms){return 0;};		// Dwell time exceeded?
-			// if((millis() - _AR_last_ms) > (_AR_every_ms)){
-			// 	// Time for next auto-repeat?
-			// 	_AR_last_ms = millis();					// Update for last tap time
-			// 	++_tapCounter;							// Update tap counter
-			// }
+			if(!_AR_enabled){return 0;};				// Auto-repeat enabled?
+			if((millis() - _down_ms) < _AR_dwell_ms){	// Dwell time exceeded?
+				return 0;};
+			if((millis()-_AR_last_ms)>(_AR_every_ms)){	// Time for next auto-repeat?
+				_AR_last_ms = millis();					// Update for last tap time
+				_tapped=true;							// Update 'tapped' flag
+			}
 		}
 		return 0;										// Nothing to report =0
 	}	
@@ -145,7 +145,7 @@ unsigned long update() {
 			_shortTapEnded = ((_up_ms - _down_ms) <= _tap_ms);	// Short tap
 			if(_shortTapEnded){++_tapCounter;}			// Increment tap counter
 			_lastTimeTapped = millis();					// Remember tap time
-			++_tapCounter;							// Set flag
+			_tapped=true;								// Set flag
 			return 0;
 			}				
 		}
@@ -186,6 +186,15 @@ unsigned long downMillis(){update();
 bool	down(){ update();
 			return _down;
 		}
+
+void	autoRepeat(bool b){
+		_AR_enabled = b;		
+		}
+
+bool	autoRepeat(){
+		return _AR_enabled;
+		}
+
 };
 
 #endif	// MULTI_TAP_BUTTON_CLASS
