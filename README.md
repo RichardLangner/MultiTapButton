@@ -7,8 +7,9 @@
   <li>Built-in debouncer removes switch noise</li>
   <li>Use almost any GPIO pin; no need for interrupts</li>
   <li>Works with active LOW or active HIGH switches</li>
-  <li>Easy implementation of auto-repeat</li>
+  <li>Auto-repeat can be enabled</li>
   <li>Each button has its own variable storage for cleaner code</li>
+  <li>All timings can be customised</li>
 </ul> 
 </strong>
 
@@ -37,8 +38,14 @@ To check if a button just released (switch opened) use <br>`if(button1.upEvent()
 ## CHECKING BUTTON PRESS DURATION
 To check how long the button has been down, use <br>`unsigned long x = button1.downMillis();`
 
-## AUTO-REPEAT AFTER A DELAY
-The example code shows how to implement an auto-repeat after a short delay, toggle the LED, and increment a counter.
+## AUTO-REPEATING TAPS AFTER A DELAY
+Hold down the button for more than a second to start auto-repeating taps.<br>
+To enable auto-repeat<br>
+`button1.autoRepeatEnabled(true)`<br>
+To disable auto-repeat<br>
+`button1.autoRepeatEnabled(false)`<br>
+To check if auto-repeat is enabled<br>
+`if(button1.autoRepeatEnabled()){...your code here}`
 
 ## STORAGE FOR YOUR BUTTON'S VARIABLES
  For ease of coding I have provided each button with a set of general purpose variables that you can use for any purpose you like. You can use the <strong>integers</strong> as counters, <strong>booleans</strong> for toggling things on/off, and <strong>unsigned</strong>
@@ -53,9 +60,9 @@ The example code shows how to implement an auto-repeat after a short delay, togg
   `button1.userULongB`
 
   ## CUSTOMISING YOUR BUTTONS (FOR ADVANCED USERS)
-  The minimum you need to create a MultiTapButton is the GPIO port number and the active level (two parameters), in this case GPIO2 and active low -<br>
+  To recap, the minimum you need to create a MultiTapButton is the GPIO port number and the active level (two parameters), in this case GPIO2 and active low -<br>
   `MultiTapButton button1(2, LOW);`<br>
-  ## There are a few more parameters you can use:<br>
+  ## Here are a few more parameters you can use:<br>
 
   'Noisy' contacts may require extra debounce time. The third parameter here sets it to 20ms (the default is 10ms)<br>
   `MultiTapButton button1(2, LOW, 20);`<br><br>
@@ -63,8 +70,8 @@ The example code shows how to implement an auto-repeat after a short delay, togg
   `MultiTapButton button1(2, LOW, 20, 400);`<br><br>
   You may want to set the inter-tap gap (after which it returns the number of taps). The last parameter here sets it to 200ms (default is 250ms)<br>
   `MultiTapButton button1(2, LOW, 20, 400, 200);`<br><br>
-
- 
+  To set the delay to 1500ms before auto-repeat starts (default is 1000ms), and the interval of auto taps to 200ms (default is 250ms)<br>
+  `button1.autoRepeatConfig(1500, 200)`<br>
   
   ## EXAMPLE CODE
   The example code provided demonstrates some of the events that MultiTapButton uses. Ensure you check the button regularly in your code as the timing accuracy depends on refreshing the button's state. Best practice is to have a fast non-blocking loop and check the button in the loop() code.

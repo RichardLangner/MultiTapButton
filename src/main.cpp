@@ -1,16 +1,25 @@
-/*By Richard Langner, Sheffield, UK, 18 November 2021.
+/*By Richard Langner, Sheffield, UK, 19 November 2021.
 
 Example code for the 'MultiTapButton' class.
 
-  Detects Single or Multiple taps
-  Detects Short or Long presses
-  Built-in debouncer removes switch noise
-  Use almost any GPIO pin; no need for interrupts
-  Works with active LOW or active HIGH switches
-  Easy implementation of auto-repeat
-  Each button has its own variable storage for cleaner code
+Watch the onboard LED (D4 on Wemos D1 mini), and also
+messages sent to the serial port.
 
-See the ReadMe.md file to see what MultiTapButton can do.
+All the functions of MultiTapButton are demonstated here, but you 
+can just pick the functions you want to use in your own code.
+
+	*	Tapping the button : toggles the LED on/off.
+
+	*	Auto-repeat can be enabled by 5 quick taps.
+
+	*	Holding the button down for more than 1sec initiates 
+		auto-repeat and makes the LED toggle on/off every 250ms.
+
+	*	After 6secs the auto-repeat is disabled, but can be
+		re-enabled by 5 quick taps.
+
+This code shows off what can be done, and fire up your imagination.
+See the ReadMe.md file to see all that MultiTapButton can do.
 */
 
 #include <Arduino.h>
@@ -53,15 +62,15 @@ void loop() {
 		  Serial.printf("Tapped %d times\n",x);
 		  }
 
-	// To detect if exactly 5 quick taps.
+	// Exactly 5 quick taps enable auto-repeat.
 	if(x==5){
 		Serial.printf("You tapped EXACTLY 5 times!\n");
-		button1.autoRepeat(true);
+		button1.autoRepeatEnabled(true);
 	}
 
 	// If button pressed for more than 6 seconds, disable auto-repeat
 	if(button1.downMillis() > 6000ul){
-		button1.autoRepeat(false);
+		button1.autoRepeatEnabled(false);
 		Serial.printf("Button down for %10lu milliseconds\n",button1.downMillis());
 	}
 }

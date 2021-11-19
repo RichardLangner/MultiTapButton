@@ -67,10 +67,10 @@ private:
 	unsigned long	_down_ms;
 	unsigned long	_up_ms;
 
-	unsigned long	_AR_dwell_ms	= 1200;		// Auto-repeat
-	unsigned long	_AR_last_ms	= millis();		// Auto-repeat
+	unsigned long	_AR_dwell_ms	= 1000;		// Auto-repeat
+	unsigned long	_AR_last_ms		= millis();	// Auto-repeat
 	unsigned long	_AR_every_ms	= 250;		// Auto-repeat
-	bool			_AR_enabled	= true;			// Auto-repeat
+	bool			_AR_enabled		= false;	// Auto-repeat
 
 	bool			_longTapEnded = false;
 	bool			_shortTapEnded = false;
@@ -187,14 +187,18 @@ bool	down(){ update();
 			return _down;
 		}
 
-void	autoRepeat(bool b){
+void	autoRepeatEnabled(bool b){
 		_AR_enabled = b;		
 		}
 
-bool	autoRepeat(){
+bool	autoRepeatEnabled(){
 		return _AR_enabled;
 		}
 
+void	autoRepeatConfig(unsigned long dwell_ms, unsigned long every_ms){
+		_AR_dwell_ms = dwell_ms;	// Delay before auto-repeat starts
+		_AR_every_ms = every_ms;	// Auto-repeats a tap every ms
+		}
 };
 
 #endif	// MULTI_TAP_BUTTON_CLASS
