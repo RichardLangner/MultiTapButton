@@ -1,24 +1,26 @@
-/*By Richard Langner, Sheffield, UK, 19 November 2021.
+/*By Richard Langner, Sheffield, UK, 20 November 2021.
 
 Example code for the 'MultiTapButton' class.
 
-Watch the onboard LED (D4 on Wemos D1 mini), and also
-messages sent to the serial port.
+Connect a button between D2 (GPIO4) and ground (0v).
+When you tap or long press the button, watch the onboard LED 
+(D4 on Wemos D1 mini), and watch messages sent to the serial port.
 
 All the functions of MultiTapButton are demonstated here, but you 
 can just pick the functions you want to use in your own code.
 
-	*	Tapping the button : toggles the LED on/off.
+	*	Tapping the button toggles the LED on/off.
 
 	*	Auto-repeat can be enabled by 5 quick taps.
 
-	*	Holding the button down for more than 1sec initiates 
-		auto-repeat and makes the LED toggle on/off every 250ms.
+	*	Holding the button down for more than 1sec auto-repeats 
+		(if enabled) and makes the LED toggle on/off every 250ms.
 
 	*	After 6secs the auto-repeat is disabled, but can be
 		re-enabled by 5 quick taps.
 
-This code shows off what can be done, and fire up your imagination.
+This demo code doesn't have a real-world application - play with it 
+to get familiar with the parts you find most useful.
 See the ReadMe.md file to see all that MultiTapButton can do.
 */
 
