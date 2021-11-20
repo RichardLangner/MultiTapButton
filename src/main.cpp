@@ -9,6 +9,8 @@ When you tap or long press the button, watch the onboard LED
 All the functions of MultiTapButton are demonstated here, but you 
 can just pick the functions you want to use in your own code.
 
+In the example below -
+
 	*	Tapping the button toggles the LED on/off.
 
 	*	Auto-repeat can be enabled by 5 quick taps.
@@ -36,7 +38,7 @@ void setup() {
 	pinMode(BUTTON_1_PIN, INPUT_PULLUP);	// Set the switched pin as an input with pullup
 	pinMode(BUILTIN_LED, OUTPUT);			// Define LED pin
 	digitalWrite(BUILTIN_LED, HIGH);		// Set LED to OFF
-	Serial.begin(74880);					// Select your baud rate or 
+	Serial.begin(74880);					// Select your baud rate for the Wemos and
 	// add monitor_speed = 74880 to the platformio.ini file.
 }
 
