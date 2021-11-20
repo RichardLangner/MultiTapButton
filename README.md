@@ -57,9 +57,9 @@ To check if auto-repeat is enabled<br>
 	`button1.userBoolA`<br>
 	`button1.userBoolB`<br>
   `button1.userULongA`<br>
-  `button1.userULongB`
+  `button1.userULongB`<br>
 
-  ## CUSTOMISING YOUR BUTTONS (FOR ADVANCED USERS)
+  # CUSTOMISING YOUR BUTTONS (FOR ADVANCED USERS)
   To recap, the minimum you need to create a MultiTapButton is the GPIO port number and the active level (two parameters), in this case GPIO2 and active low -<br>
   `MultiTapButton button1(2, LOW);`<br>
   ## Here are a few more parameters you can use:<br>
