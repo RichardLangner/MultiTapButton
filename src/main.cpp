@@ -21,8 +21,8 @@ In the example below -
 	*	After 6secs the auto-repeat is disabled, but can be
 		re-enabled by 5 quick taps.
 
-This demo code doesn't have a real-world application - play with it 
-to get familiar with the parts you find most useful.
+This demo code is just for fun - play with it to get familiar 
+with the parts you find most useful.
 See the ReadMe.md file to see all that MultiTapButton can do.
 */
 
