@@ -1,4 +1,4 @@
-/*By Richard Langner, Sheffield, UK, 20 November 2021.
+/*By Richard Langner, Sheffield, UK, 21 November 2021.
 
 Example code for the 'MultiTapButton' class.
 
