@@ -1,5 +1,5 @@
 /*
-MultiTapButton Class v0.11 updated 10 November 2021.
+MultiTapButton Class v0.2 updated 20 November 2021.
 Written by Richard Langner, Sheffield Hackspace, UK. 
  
 At its simplest, MultiTapButton debounces a physical button.
@@ -65,7 +65,12 @@ private:
 	unsigned long	_lastTimeUp			= millis();
 	unsigned long	_lastTimeTapped		= millis();
 	unsigned long	_down_ms;
-	unsigned long	_up_ms;		
+	unsigned long	_up_ms;
+
+	unsigned long	_AR_dwell_ms	= 1000;		// Auto-repeat
+	unsigned long	_AR_last_ms		= millis();	// Auto-repeat
+	unsigned long	_AR_every_ms	= 250;		// Auto-repeat
+	bool			_AR_enabled		= false;	// Auto-repeat
 
 	bool			_longTapEnded = false;
 	bool			_shortTapEnded = false;
@@ -114,7 +119,18 @@ unsigned long update() {
 				_shortTapEnded = false;					// Button is down
 				return 1;								// Button DOWN event =1
 			}
+<<<<<<< HEAD
 			// Masterrrrrr
+=======
+			// Auto-repeat code for Richard
+			if(!_AR_enabled){return 0;};				// Auto-repeat enabled?
+			if((millis() - _down_ms) < _AR_dwell_ms){	// Dwell time exceeded?
+				return 0;};
+			if((millis()-_AR_last_ms)>(_AR_every_ms)){	// Time for next auto-repeat?
+				_AR_last_ms = millis();					// Update for last tap time
+				_tapped=true;							// Update 'tapped' flag
+			}
+>>>>>>> autoRepeatFeature
 		}
 		return 0;										// Nothing to report =0
 	}	
@@ -173,6 +189,19 @@ unsigned long downMillis(){update();
 
 bool	down(){ update();
 			return _down;
+		}
+
+void	autoRepeatEnabled(bool b){
+		_AR_enabled = b;		
+		}
+
+bool	autoRepeatEnabled(){
+		return _AR_enabled;
+		}
+
+void	autoRepeatConfig(unsigned long dwell_ms, unsigned long every_ms){
+		_AR_dwell_ms = dwell_ms;	// Delay before auto-repeat starts
+		_AR_every_ms = every_ms;	// Auto-repeats a tap every ms
 		}
 };
 

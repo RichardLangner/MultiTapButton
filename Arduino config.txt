@@ -1,0 +1,13 @@
+The example code is configured for Visual Studio Code and a Wemos D1 mini.
+
+*   For the Arduino IDE, with an Arduino Uno:
+
+*   Change 'main.cpp' filename to 'main.ino'
+
+*   Ensure 'MultiTapButton.h' is in the include path, 
+    or in the same directory as 'main.ino'
+
+#define BUTTON_1_PIN  D2	// Change to the pin you prefer
+#define BUILTIN_LED D4		// Uno uses pin 13
+
+Serial.begin(74880);	    // Change to 9600 or 115200
