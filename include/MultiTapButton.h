@@ -114,6 +114,7 @@ unsigned long update() {
 				_shortTapEnded = false;					// Button is down
 				return 1;								// Button DOWN event =1
 			}
+			// Masterrrrrr
 		}
 		return 0;										// Nothing to report =0
 	}	
