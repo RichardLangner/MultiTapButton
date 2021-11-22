@@ -72,25 +72,10 @@ void loop() {
 		button1.autoRepeatEnabled(true);
 	}
 
-<<<<<<< HEAD
-	// // Auto-repeats if button pressed for more than 1.2 seconds
-	// if(button1.downMillis() > 1200ul){
-	// 	static unsigned long j;
-	// 	unsigned long i=(button1.downMillis() -1200ul) / 250;
-	// 	if(i==j){return;}	// Count same as last time, exit
-	// 	j=i;
-
-	// 	// Your auto-repeat code here
-	// 	digitalWrite(BUILTIN_LED, i%2);	// Toggle LED
-	// 	// Send number to serial
-	// 	Serial.printf("Toggles LED every 250ms %8lu\n",i);
-	// }
-=======
 	// If button pressed for more than 6 seconds, disable auto-repeat
 	if(button1.downMillis() > 6000ul){
 		button1.autoRepeatEnabled(false);
 		Serial.printf("Button down for %10lu milliseconds\n",button1.downMillis());
 	}
->>>>>>> autoRepeatFeature
 }
 
