@@ -119,7 +119,7 @@ unsigned long update() {
 				_shortTapEnded = false;					// Button is down
 				return 1;								// Button DOWN event =1
 			}
-			// Auto-repeat code
+			// Auto-repeat code for Richard
 			if(!_AR_enabled){return 0;};				// Auto-repeat enabled?
 			if((millis() - _down_ms) < _AR_dwell_ms){	// Dwell time exceeded?
 				return 0;};
