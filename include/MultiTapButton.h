@@ -119,9 +119,6 @@ unsigned long update() {
 				_shortTapEnded = false;					// Button is down
 				return 1;								// Button DOWN event =1
 			}
-<<<<<<< HEAD
-			// Masterrrrrr
-=======
 			// Auto-repeat code for Richard
 			if(!_AR_enabled){return 0;};				// Auto-repeat enabled?
 			if((millis() - _down_ms) < _AR_dwell_ms){	// Dwell time exceeded?
@@ -130,7 +127,6 @@ unsigned long update() {
 				_AR_last_ms = millis();					// Update for last tap time
 				_tapped=true;							// Update 'tapped' flag
 			}
->>>>>>> autoRepeatFeature
 		}
 		return 0;										// Nothing to report =0
 	}	
