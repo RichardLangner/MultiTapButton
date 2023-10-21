@@ -11,14 +11,14 @@ And there's plenty more functionality you can use.
  
 Use a MultiTapButton to detect:
 	SHORT PRESSES (TAPS)
-	- if you tapped the button				if(button1.tapped()){...}
-	- the number of taps					int x = button1.tapCount();
+	- if you tapped the button			if(button1.tapped()){...}
+	- the number of taps				int x = button1.tapCount();
 	EVENTS
 	- if a button just went 'down'			if(button1.downEvent()){...}
 	- if a button just went 'up'			if(button1.upEvent()){...}
 	LONGER PRESSES
-	- duration of press	so far				unsigned long x = button1.downMillis();
-	- if a button down						if(button1.down()){...}
+	- duration of press so far			unsigned long x = button1.downMillis();
+	- if a button down				if(button1.down()){...}
 	
 Example code is provided in 'MultiTapButton' sketch.
 
@@ -50,8 +50,8 @@ you have a fast non-blocking loop(); and check buttons regularly.
 	button1.userIntB				Spare Integer, free for you to use.
 	button1.userBoolA				Spare Boolean, free for you to use.
 	button1.userBoolB				Spare Boolean, free for you to use.
-    button1.userULongA;				Spare Unsigned Long,free for you to use.
-    button1.userULongB;				Spare Unsigned Long,free for you to use. 
+	button1.userULongA;				Spare Unsigned Long,free for you to use.
+	button1.userULongB;				Spare Unsigned Long,free for you to use. 
 */
 
 #include <Arduino.h>
