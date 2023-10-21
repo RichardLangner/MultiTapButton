@@ -36,7 +36,7 @@ To check if a button was just pressed (switch closed) use <br>`if(button1.downEv
 To check if a button just released (switch opened) use <br>`if(button1.upEvent()){...your code here}`
 
 ## CHECKING BUTTON PRESS DURATION
-To check how long the button has been down, use <br>`unsigned long x = button1.downMillis();`
+To check how long the button has been down, use <br>`unsigned long x = button1.downMillis();`<br>Tip : x can be the button's internal variable<br>`button1.userUlongA = button1.downMillis();`
 
 ## AUTO-REPEATING TAPS AFTER A DELAY
 Hold down the button for more than a second to start auto-repeating taps.<br>
