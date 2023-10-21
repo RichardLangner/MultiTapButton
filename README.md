@@ -25,7 +25,7 @@ If you have a button which pulls GPIO2 LOW when pressed, and you want to define 
 ## CHECKING IF BUTTON WAS TAPPED
 To check if the button was tapped, use <br>`if(button1.tapped()){...your code here}`<br>
 ## CHECKING IF BUTTON WAS TAPPED MULTIPLE TIMES
-For multiple taps, you can find the number of taps with <br>`int x = button1.tapCount();`
+For multiple taps, you can find the number of taps with <br>`int x = button1.tapCount();`<br>Tip : x can be the button's internal variable<br>`button1.userIntA = button1.tapCount();`
 
 ## CHECKING IF BUTTON IS DOWN
 To check if a button is currently down use<br> `if(button1.down()){...your code here}`
