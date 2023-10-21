@@ -78,21 +78,21 @@ private:
 	bool			_downEvent=false;
 	bool			_upEvent=false;
 	bool			_tapped;
-	int				_tapCounter;
-	int				_tapCounter2;
+	int			_tapCounter;
+	int			_tapCounter2;
 	uint8_t			_buttonPin;			// Switch pin
 	bool			_activeLevel = LOW;	// Pin goes low when pressed
-	unsigned long	_debounce;			// Min tap duration ms(debounce)
-	unsigned long	_tap_ms;			// Max tap duration ms, then longtap
-	unsigned long	_tapGap_ms;			// Inter-tap gap, for multi-tap sensing
+	unsigned long		_debounce;			// Min tap duration ms(debounce)
+	unsigned long		_tap_ms;			// Max tap duration ms, then longtap
+	unsigned long		_tapGap_ms;			// Inter-tap gap, for multi-tap sensing
 
 public:
-	int				userIntA;			// Free to use
-	int				userIntB;			// Free to use
+	int			userIntA;			// Free to use
+	int			userIntB;			// Free to use
 	bool			userBoolA;			// Free to use
 	bool			userBoolB;			// Free to use
-    unsigned long   userULongA;			// free to use
-    unsigned long   userULongB;			// free to use
+    unsigned long   		userULongA;			// free to use
+    unsigned long  		userULongB;			// free to use
 
 
 // Create a TapButton object
