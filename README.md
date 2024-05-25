@@ -64,9 +64,9 @@ the default is `button1.autoRepeatConfig(1000,250)`;
 
   # CUSTOMISING YOUR BUTTONS (FOR ADVANCED USERS)
   As you may have noticed, the minimum you need to create a MultiTapButton is two parameters, the GPIO port number and the active level.
-  <br>This is how we connect GPIO2 to be pulled low when operated -<br>
+  <br>If we connect GPIO2 to be pulled low when operated -<br>
   `MultiTapButton button1(2, LOW);`<br>
-  <br>This is how we connect D4 to be pulled high when operated -<br>
+  <br>If we connect D4 to be pulled high when operated -<br>
   `MultiTapButton button1(D4, HIGH);`<br>
   
   ## Here are a few more parameters you can use:<br>
