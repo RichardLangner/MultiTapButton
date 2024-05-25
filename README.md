@@ -9,7 +9,7 @@ Simplifies coding for
   <li>Active LOW or active HIGH switches</li>
   <li>Debouncing to remove switch noise</li>
   <li>Cleaner code as each button has its own data storage</li>
-  <li>Customisable settings</li>
+  <li>Fully customisable settings</li>
 </ul> 
 </strong>
 
@@ -25,17 +25,17 @@ If you have a button which pulls GPIO2 LOW when pressed, and you want to define 
 ## CHECKING IF BUTTON WAS TAPPED
 To check if the button was tapped, use <br>`if(button1.tapped()){...your code here}`<br>
 ## CHECKING IF BUTTON WAS TAPPED MULTIPLE TIMES
-For multiple taps, you can find the number of taps with <br>`int x = button1.tapCount();`<br>Tip : x can be the button's internal variable<br>`button1.userIntA = button1.tapCount();`
+For multiple taps, you can find the number of taps with <br>`int x = button1.tapCount();`<br><br>Tip : x can be the button's internal variable<br>`button1.userIntA = button1.tapCount();`
 
 ## CHECKING IF BUTTON IS DOWN
 To check if a button is currently down use<br> `if(button1.down()){...your code here}`
 
 ## CHECKING IF BUTTON HAS CHANGED STATE
-To check if a button was just pressed (switch closed) use <br>`if(button1.downEvent()){...your code here}`<br>
+To check if a button was just pressed (switch closed) use <br>`if(button1.downEvent()){...your code here}`<br><br>
 To check if a button just released (switch opened) use <br>`if(button1.upEvent()){...your code here}`
 
 ## CHECKING BUTTON PRESS DURATION
-To check how long the button has been down, use <br>`unsigned long x = button1.downMillis();`<br>Tip : x can be the button's internal variable<br>`button1.userUlongA = button1.downMillis();`
+To check how long the button has been down, use <br>`unsigned long x = button1.downMillis();`<br><br>Tip : x can be the button's internal variable<br>`button1.userUlongA = button1.downMillis();`
 
 ## AUTO-REPEATING TAPS AFTER A DELAY
 Hold down the button for more than a second to start auto-repeating taps.<br>
@@ -53,7 +53,7 @@ the default is `button1.autoRepeatConfig(1000,250)`;
  For ease of coding I have provided each button with a set of general purpose variables that you can use for any purpose you like. You can use the <strong>integers</strong> as counters, <strong>booleans</strong> for toggling things on/off, and <strong>unsigned</strong>
  longs for large numbers such as milliseconds<br>
  These bonus variables can be addressed
-  using the following code (assuming the switch is named 'button1')<br>
+  using the following code (assuming the switch is named <strong>'button1'</strong>)<br>
 	`button1.userIntA`<br>
 	`button1.userIntB`<br>
 	`button1.userBoolA`<br>
@@ -62,10 +62,10 @@ the default is `button1.autoRepeatConfig(1000,250)`;
   	`button1.userULongB`<br>
 
   # CUSTOMISING YOUR BUTTONS (FOR ADVANCED USERS)
-  As you may have noticed, the minimum you need to create a MultiTapButton is two parameters, the GPIO port number and the active level.
-  <br>If we connect GPIO2 to be pulled low when operated -<br>
+  As you may have noticed, the minimum you need to create a MultiTapButton is two parameters, the GPIO port number and the active level.<br>
+  <br>If GPIO2 is pulled <strong>LOW</strong> when operated (default) -<br>
   `MultiTapButton button1(2, LOW);`<br>
-  <br>If we connect D4 to be pulled high when operated -<br>
+  <br>If D4 is pulled <strong>HIGH</strong> when operated -<br>
   `MultiTapButton button1(D4, HIGH);`<br>
   
   ## Here are a few more parameters you can use:<br>
