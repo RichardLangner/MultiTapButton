@@ -1,20 +1,20 @@
 # MultiTapButton : Buttons and switches made easy.
-
+Simplifies coding for
 <strong>
 <ul>
-  <li>Detects Single or Multiple taps</li>
-  <li>Detects Short or Long presses</li>
-  <li>Built-in debouncer removes switch noise</li>
-  <li>Use almost any GPIO pin; no need for interrupts</li>
-  <li>Works with active LOW or active HIGH switches</li>
-  <li>Auto-repeat can be enabled</li>
-  <li>Each button has its own variable storage for cleaner code</li>
-  <li>All timings can be customised</li>
+  <li>Single and Multiple taps</li>
+  <li>Short presses and Long presses</li>
+  <li>Auto-repeat</li>
+  <li>Use with almost any GPIO pin, without the need for interrupts</li>
+  <li>Active LOW or active HIGH switches</li>
+  <li>Debouncing to remove switch noise</li>
+  <li>Cleaner code as each button has its own data storage</li>
+  <li>Customisable settings</li>
 </ul> 
 </strong>
 
 ## WHY DO I NEED IT?
-At at absolute minimum, it saves you writing debounce code for each button.<br>
+At at absolute minimum, it will save you writing debounce code for each button.<br>
 But it can do a lot more - it's ideal for any device using single taps or multi-taps, or even a 10 second press to reboot a device, or perhaps all of these things using only one button.<br><br>
 It can also simplify coding if you have several buttons, and has the advantage that each button contains its own settings and data.
 
@@ -31,7 +31,6 @@ For multiple taps, you can find the number of taps with <br>`int x = button1.tap
 To check if a button is currently down use<br> `if(button1.down()){...your code here}`
 
 ## CHECKING IF BUTTON HAS CHANGED STATE
-
 To check if a button was just pressed (switch closed) use <br>`if(button1.downEvent()){...your code here}`<br>
 To check if a button just released (switch opened) use <br>`if(button1.upEvent()){...your code here}`
 
@@ -59,8 +58,8 @@ the default is `button1.autoRepeatConfig(1000,250)`;
 	`button1.userIntB`<br>
 	`button1.userBoolA`<br>
 	`button1.userBoolB`<br>
-  `button1.userULongA`<br>
-  `button1.userULongB`<br>
+  	`button1.userULongA`<br>
+  	`button1.userULongB`<br>
 
   # CUSTOMISING YOUR BUTTONS (FOR ADVANCED USERS)
   As you may have noticed, the minimum you need to create a MultiTapButton is two parameters, the GPIO port number and the active level.
