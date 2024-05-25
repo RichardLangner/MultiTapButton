@@ -1,5 +1,5 @@
 /*
-MultiTapButton Class v0.2 updated 20 November 2021.
+MultiTapButton Class v0.2 updated 25 May 2024.
 Written by Richard Langner, Sheffield Hackspace, UK.
  
 At its simplest, MultiTapButton debounces a physical button.
@@ -62,7 +62,7 @@ class MultiTapButton
 {
 private:
 	unsigned long	_lastTimeDown		= millis();
-	unsigned long	_lastTimeUp			= millis();
+	unsigned long	_lastTimeUp		= millis();
 	unsigned long	_lastTimeTapped		= millis();
 	unsigned long	_down_ms;
 	unsigned long	_up_ms;
