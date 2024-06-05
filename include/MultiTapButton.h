@@ -20,7 +20,7 @@ Use a MultiTapButton to detect:
 	- duration of press so far         unsigned long x = button1.downMillis();
 	- if a button down                 if(button1.down()){...}
 	
-Example code is provided in 'MultiTapButton' sketch.
+Example code is provided in the examples folder.
 
 -------------- USAGE EXAMPLES --------------
 SIMPLE: If you have 'button1' which pulls GPIO2 LOW when pressed -

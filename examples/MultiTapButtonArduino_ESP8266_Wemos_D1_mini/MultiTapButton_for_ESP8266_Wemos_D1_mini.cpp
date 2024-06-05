@@ -1,7 +1,11 @@
 /*By Richard Langner, Sheffield, UK, 05 June 2024.
 
 Example code for the 'MultiTapButton' class.
-============ GPIO pins below are for Wemos D1 mini ===============
+
+**********************************************
+*   GPIO pins below are for Wemos D1 mini    *
+*   Change pins as required for your device  *
+**********************************************
 
 Connect a button between D2 (GPIO4) and ground (0v).
 When you tap or long press the button, watch the onboard LED 

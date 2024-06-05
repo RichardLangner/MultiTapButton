@@ -9,14 +9,15 @@ single tap, multi-tap, long press, press duration, auto-repeat.
 *************************************************
 
 Connect a normally open button between a pin of your choice (e.g. D2) and GND.
-   For a normally closed switch change
-   MultiTapButton button1(BUTTON_1_PIN,HIGH);
-   to
-   MultiTapButton button1(BUTTON_1_PIN,LOW);
+Ensure the pin is pulled up by a resistor, or the internal pullups.
+
+   For a normally open switch that pulls the pin LOW when operated:
+   MultiTapButton button1(BUTTON_1_PIN, LOW);
+
+   For a normally closed switch that pulls the pin HIGH when operated:
+   MultiTapButton button1(BUTTON_1_PIN, HIGH);
 
 Results are sent to the serial port.
-
-Pin numbers are for ARDUINO NANO:
 */
 
 #include <Arduino.h>
