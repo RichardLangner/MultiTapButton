@@ -1,6 +1,6 @@
 /*By Richard Langner, Sheffield, UK, 5 June 2024.
 
-Example code for the 'MultiTapButton' class to demonstrate
+Example code for the 'MultiTapButton' class to demonstrateExample code for the 'MultiTapButton' class to demonstrate
 single tap, multi-tap, long press, press duration, auto-repeat.
 
 *************************************************
@@ -15,6 +15,8 @@ Connect a normally open button between a pin of your choice (e.g. D2) and GND.
    MultiTapButton button1(BUTTON_1_PIN,LOW);
 
 Results are sent to the serial port.
+
+Pin numbers are for ARDUINO NANO:
 */
 
 #include <Arduino.h>
@@ -24,8 +26,8 @@ Results are sent to the serial port.
 #define BUTTON_1_PIN  2		// Button is connected between D2 and Ground
 #define BUILTIN_LED 13		// Arduino Nano is pin 13
 
-// Create a TapButton object with active LOW pin, 
-MultiTapButton button1(BUTTON_1_PIN,LOW);
+// Create a TapButton object with active HIGH pin, 
+MultiTapButton button1(BUTTON_1_PIN,HIGH);
 
 void setup() {
 	pinMode(BUTTON_1_PIN, INPUT_PULLUP);	// Set the switched pin as an input with pullup

@@ -1,6 +1,6 @@
 /*By Richard Langner, Sheffield, UK, 5 June 2024.
 
-Example code for the 'MultiTapButton' class to demonstrate
+Example code for the 'MultiTapButton' class to demonstrateExample code for the 'MultiTapButton' class to demonstrate
 single tap, multi-tap, long press, press duration, auto-repeat.
 
 *************************************************
@@ -15,6 +15,8 @@ Connect a normally open button between a pin of your choice (e.g. D2) and GND.
    MultiTapButton button1(BUTTON_1_PIN,LOW);
 
 Results are sent to the serial port.
+
+Pin numbers are for ARDUINO NANO:
 */
 
 #include <Arduino.h>

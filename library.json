@@ -1,16 +1,15 @@
 {
   "name": "MultiTapButton",
-  "version": "1.0.0",
-  "description": "Simplify your code to identify single taps, double taps (in fact ANY number of consecutive taps), long presses (e.g. button held down for 10 seconds to access a function), button up and button down events, time button has been pressed. Optional auto-repeat after button held down for a certain time.",
+  "version": "1.0.3",
+  "description": "Simplify your code to identify single taps, double taps (in fact ANY number of consecutive taps), long presses (e.g. button held down for 10 seconds to access a function), button up and button down events, time the button has been pressed. Auto-repeat after button held down for a certain time. The code should run on most microcontrollers as it does not use interrupts or special registers",
   "keywords": [
     "button",
     "switch",
     "debounce",
-    "auto",
-    "repeat",
-    "single",
-    "double",
-    "tap",
+    "auto repeat",
+    "single tap",
+    "double tap",
+    "long press",
     "press",
     "hold"
   ],
@@ -20,12 +19,15 @@
   },
   "authors": [
     {
-      "name": "Richard Langner",
-      "email": "RichardLangner@gmail.com"
+      "name": "Richard Langner"
     }
   ],
   "license": "MIT",
-  "homepage": "TBA",
-  "frameworks": "*",
-  "platforms": "*"
+  "frameworks": "arduino",
+  "platforms": [
+    "atmelavr",
+    "espressif8266",
+    "atmelmegaavr",
+    "teensy"
+  ]
 }
