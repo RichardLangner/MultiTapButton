@@ -1,6 +1,6 @@
 /*
-MultiTapButton Class v0.2 updated 25 May 2024.
-Written by Richard Langner, Sheffield Hackspace, UK.
+MultiTapButton Class v1.03 updated 5 June 2024.
+Written by Richard Langner, member of Sheffield Hackspace, UK. 
  
 At its simplest, MultiTapButton debounces a physical button.
 MultiTapButton does not use interrupts so it can be used on
@@ -11,47 +11,57 @@ And there's plenty more functionality you can use.
  
 Use a MultiTapButton to detect:
 	SHORT PRESSES (TAPS)
-	- if you tapped the button			if(button1.tapped()){...}
-	- the number of taps				int x = button1.tapCount();
+	- if you tapped the button         if(button1.tapped()){...}
+	- the number of taps               int x = button1.tapCount();
 	EVENTS
-	- if a button just went 'down'			if(button1.downEvent()){...}
-	- if a button just went 'up'			if(button1.upEvent()){...}
+	- if a button just went 'down'     if(button1.downEvent()){...}
+	- if a button just went 'up'       if(button1.upEvent()){...}
 	LONGER PRESSES
-	- duration of press so far			unsigned long x = button1.downMillis();
-	- if a button down				if(button1.down()){...}
+	- duration of press so far         unsigned long x = button1.downMillis();
+	- if a button down                 if(button1.down()){...}
 	
-Example code is provided in 'MultiTapButton' sketch.
+Example code is provided in the examples folder.
 
--------------- USAGE --------------
+-------------- USAGE EXAMPLES --------------
 SIMPLE: If you have 'button1' which pulls GPIO2 LOW when pressed -
 	MultiTapButton button1(2,LOW);
 
 NOISY ENVIRONMENTS: As above, but increase the debounce time to 20ms -
 	MultiTapButton button1(2, LOW, 20)
 
-ADVANCED: Button has active HIGH pin GPIO2 debounced for 20ms -
+ADVANCED: 'button1' has active HIGH pin GPIO2 debounced for 20ms
 with tap maximum of 400ms and inter-tap gap of 200ms.
 	MultiTapButton button1(2, HIGH, 20, 400, 200);
+	
+AUTO-REPEAT: 
+Enable (or disable) auto-repeat -
+	autoRepeatEnabled(true);
+	autoRepeatEnabled(false);
 
--------------- DEFAULTS --------------
+AUTO-REPEAT CONFIGURATION:
+To set custom times of 2 seconds dwell, then repeat tap every 500ms -
+	autoRepeatConfig(2000, 500);
+
+-------------- DEFAULTS ------------------
 Debounce time 10ms.
 Maximum tap period 500ms, after which it's a long press.
 Maximum gap between taps for multi-tap 250ms.
+Auto-repeat dwell time 1000ms, repeat interval 250ms.
 
 -------------- REQUIREMENTS --------------
-Accuracy depends on how often you call any of the button's functions, so ensure
-you have a fast non-blocking loop(); and check buttons regularly.
+Timing accuracy depends on how often you call any of the button's functions,
+so ensure you have a fast non-blocking loop(); and check buttons regularly.
 
--------------- EXTRAS --------------
+-------------- PRIVATE WORKSPACE FOR EACH BUTTON ---------
  For ease of coding, you can use each button's inbuilt general purpose user variables.
- E.G.use integers as counters, and booleans for toggling things on/off, unsigned
- longs for large numbers such as millis();
-	button1.userIntA				Spare Integer, free for you to use.
-	button1.userIntB				Spare Integer, free for you to use.
-	button1.userBoolA				Spare Boolean, free for you to use.
-	button1.userBoolB				Spare Boolean, free for you to use.
-	button1.userULongA;				Spare Unsigned Long,free for you to use.
-	button1.userULongB;				Spare Unsigned Long,free for you to use. 
+ E.G.use integers as counters, and booleans for toggling things on/off, and
+ unsigned longs for large numbers such as millis();
+	button1.userIntA        Spare Integer, free for you to use.
+	button1.userIntB        Spare Integer, free for you to use.
+	button1.userBoolA       Spare Boolean, free for you to use.
+	button1.userBoolB       Spare Boolean, free for you to use.
+  button1.userULongA;     Spare Unsigned Long,free for you to use.
+	button1.userULongB;     Spare Unsigned Long,free for you to use. 
 */
 
 #include <Arduino.h>
@@ -62,15 +72,15 @@ class MultiTapButton
 {
 private:
 	unsigned long	_lastTimeDown		= millis();
-	unsigned long	_lastTimeUp		= millis();
+	unsigned long	_lastTimeUp			= millis();
 	unsigned long	_lastTimeTapped		= millis();
 	unsigned long	_down_ms;
 	unsigned long	_up_ms;
 
-	unsigned long	_AR_dwell_ms	= 1000;		// Auto-repeat
-	unsigned long	_AR_last_ms	= millis();	// Auto-repeat
-	unsigned long	_AR_every_ms	= 250;		// Auto-repeat
-	bool		_AR_enabled	= false;	// Auto-repeat
+	unsigned long	_AR_dwell_ms	= 1000;      // Auto-repeat
+	unsigned long	_AR_last_ms		= millis();  // Auto-repeat
+	unsigned long	_AR_every_ms	= 250;       // Auto-repeat
+	bool			_AR_enabled		= false;         // Auto-repeat
 
 	bool			_longTapEnded = false;
 	bool			_shortTapEnded = false;
@@ -78,21 +88,21 @@ private:
 	bool			_downEvent=false;
 	bool			_upEvent=false;
 	bool			_tapped;
-	int			_tapCounter;
-	int			_tapCounter2;
-	uint8_t			_buttonPin;		// Switch pin
+	int				_tapCounter;
+	int				_tapCounter2;
+	uint8_t			_buttonPin;       // Switch pin
 	bool			_activeLevel = LOW;	// Pin goes low when pressed
-	unsigned long		_debounce;		// Min tap duration ms(debounce)
-	unsigned long		_tap_ms;		// Max tap duration ms, then longtap
-	unsigned long		_tapGap_ms;		// Inter-tap gap, for multi-tap sensing
+	unsigned long	_debounce;      // Min tap duration ms(debounce)
+	unsigned long	_tap_ms;        // Max tap duration ms, then longtap
+	unsigned long	_tapGap_ms;     // Inter-tap gap, for multi-tap sensing
 
 public:
-	int			userIntA;		// Free to use
-	int			userIntB;		// Free to use
-	bool			userBoolA;		// Free to use
-	bool			userBoolB;		// Free to use
-    unsigned long   		userULongA;		// free to use
-    unsigned long  		userULongB;		// free to use
+	int             userIntA;     // Free to use
+	int             userIntB;     // Free to use
+	bool            userBoolA;    // Free to use
+	bool            userBoolB;    // Free to use
+  unsigned long   userULongA;   // free to use
+  unsigned long   userULongB;   // free to use
 
 
 // Create a TapButton object
