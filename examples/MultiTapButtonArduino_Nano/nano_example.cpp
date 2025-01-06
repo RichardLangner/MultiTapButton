@@ -1,15 +1,19 @@
-/*By Richard Langner, Sheffield, UK, 6 Jan 2025
+/*By Richard Langner, Sheffield, UK, 5 June 2024.
 
-Example code for the 'MultiTapButton' class
+Example code for the 'MultiTapButton' class to demonstrate
+single tap, multi-tap, long press, press duration, auto-repeat.
+
 *************************************************
-*     ROTARY ENCODER without interrupts         *
-*     GPIO pin numbers are for Wemos D1 mini    *
+*     GPIO pin numbers are for ARDUINO NANO     *
 *     Change pins as required for your device   *
 *************************************************
 
-Captures clicks and direction of a rotary encoder
-All pins have pull-ups enabled in software
-Pins CLK=D7  DAT=D6  SWITCH=D5
+Connect a normally open button between a pin of your choice (e.g. D2) and GND.
+   For a normally closed switch change
+   MultiTapButton button1(BUTTON_1_PIN,HIGH);
+   to
+   MultiTapButton button1(BUTTON_1_PIN,LOW);
+
 Results are sent to the serial port.
 */
 
