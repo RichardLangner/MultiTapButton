@@ -1,0 +1,5 @@
+Decoding the rotary encoder.
+Check for a change event in CLK value, then check the value of DAT.
+
+NOTE: the code works but polling is not the best way to go as it sometimes misses the change.
+Use interrupts instead.
