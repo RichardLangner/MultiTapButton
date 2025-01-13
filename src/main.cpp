@@ -15,32 +15,55 @@ Results are sent to the serial port.
 
 #include <Arduino.h>
 #include "MultiTapButton.h"
+#include "SimpleTimer.h"
 
 // Set the button and the pin numbers for your microcontroller
 #define CLK 	D7		// Switch is connected between D7 and Ground
 #define DAT 	D6		// Switch is connected between D6 and Ground
-#define BUTTON	D6		// Switch is connected between D5 and Ground
+#define BUTTON	D5		// Switch is connected between D5 and Ground
 
 // Create 3 MultiTapButton objects with active LOW pins, 
-MultiTapButton clk(CLK,LOW),dat(DAT,LOW), button(BUTTON,LOW);
+MultiTapButton C(CLK,LOW,2),D(DAT,LOW,5), button(BUTTON,LOW);
+SimpleTimer timer1;
+int counter=0;
 
 void setup() {
 	pinMode(CLK, 	INPUT_PULLUP);	// Set the switched pins as an input with pullup
 	pinMode(DAT, 	INPUT_PULLUP);
 	pinMode(BUTTON, INPUT_PULLUP);
+	 pinMode(D4, OUTPUT);
 	Serial.begin(74880);			// Start the Serial output
+	Serial.println("Ready");
+	digitalWrite(D4, HIGH);	// OFF
 }
+unsigned long lastProcessedTime = 0;
+const unsigned long processInterval = 500;  // Minimum interval between normal events in ms
+const unsigned long fastEventThreshold = 50;  // Time threshold for fast event detection (ms)
+bool newDirection = false; // Default direction is false (counterclockwise)
 
 void loop() {
+    // Check if there is a change in encoder state (either down or up event)
+    if (C.downEvent() || C.upEvent()) {
 
-	// Check if just changed.
-	if(clk.downEvent() or clk.upEvent()){	
-		if(dat.down()){
-		Serial.println("EVENT: right");
-		}
-		else{
-			Serial.println("EVENT: left");
-		}
-	}
+        unsigned long currentTime = millis(); // Current time for timing check
+
+        // Check if the time since the last processed event is larger than the fast event threshold
+        if (currentTime - lastProcessedTime > fastEventThreshold) {
+            if (D.down() != C.down()) {
+                newDirection = true;  // Clockwise
+                counter++;  // Increase counter by 1 for clockwise movement
+            } else {
+                newDirection = false; // Counterclockwise
+                counter--;  // Decrease counter by 1 for counterclockwise movement
+            }
+					Serial.printf("Counter is %3d direction %d\n", counter, newDirection);
+        }
+
+        // Update last processed time
+        lastProcessedTime = currentTime;
+
+        // Toggle LED for feedback (optional)
+        digitalWrite(D4, !digitalRead(D4));
+
+    }
 }
-
